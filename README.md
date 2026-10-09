@@ -1,30 +1,21 @@
 # Mini ClicDossier
 
-A 100% local document AI pipeline that does the first check of a loan file, in French and English.
-One mixed PDF goes in (ID card, payslip, proof of address, bank statement, some pages scanned).
-A report comes out for the analyst: is the file complete, what do the documents say,
-and does anything not match?
+**Automatic check of French loan files, 100% local: one loan file (4 documents, scanned pages
+included) is checked in ~8 seconds on a 6 GB laptop GPU. 97.7 % of fields extracted exactly,
+6/6 planted mismatches caught with 0 false alerts, and no file wrongly marked OK**
+(30 synthetic French loan files, 114 pages).
 
-## Why I built this
+**See the output:** [French report (HTML)](https://ubaidur404786.github.io/mini-clicdossier/report_fr.html)
+· [English report (HTML)](https://ubaidur404786.github.io/mini-clicdossier/report_en.html)
+· [pipeline diagram](docs/architecture.svg)
 
-I'm a junior ML / AI engineer and I wanted to learn document AI the way banks and insurers in France
-need it:
+## 1. The problem
 
-- **the documents can't leave the company.** Loan files are personal data (GDPR), so the models
-  must run on the company's own servers, not through a cloud API;
-- **French documents first**, with English next to it;
-- **speed matters as much as accuracy**, because a bank processes thousands of files.
+When a French bank receives a loan application, an analyst checks the file by hand:
 
-So instead of a notebook demo, I built the full chain end to end, with small open models on a
-6 GB laptop GPU, and I measured accuracy and speed at every step. I wanted to understand where
-such a system breaks, and why, not only make it work once.
-
-## The problem it solves
-
-When a bank receives a loan application, an analyst checks the file by hand:
-
-1. **Are all the documents there?** ID card, payslip, proof of address, bank statement.
-2. **What do they say?** Name, address, salary, IBAN, dates.
+1. **Are all the documents there?** Carte d'identité, bulletin de salaire, justificatif de
+   domicile, relevé bancaire.
+2. **What do they say?** Name, address, net salary, IBAN, dates.
 3. **Do they agree with each other?**
    - same name on every document;
    - same address on the bill and the bank statement;
@@ -32,105 +23,108 @@ When a bank receives a loan application, an analyst checks the file by hand:
    - the net salary from the payslip really arrives on the bank account.
 
 This is slow and repetitive, and a missed mismatch can be fraud or a compliance problem.
-Mini ClicDossier does this first pass automatically and tells the analyst where to look.
-The analyst still makes the decision.
+And loan files are personal data (GDPR), so they should not be sent to a cloud AI service.
 
-## How it works
+## 2. The solution: what this project produces
+
+One mixed PDF goes in. A report for the analyst comes out, saying whether the file is complete,
+what each document says, and what does not match. The analyst still makes the decision.
+
+**Example: French loan file `dossier_014`.** The pipeline found the 4 documents, read their
+fields and ran the checks. Everything matches except the proof of address, which is 156 days old
+(max 90), so the file gets status `ALERT`.
+
+![Report for French loan file dossier_014: status ALERT, proof of address too old](docs/report_fr.svg)
+
+[Open this report as an HTML page](https://ubaidur404786.github.io/mini-clicdossier/report_fr.html).
+The same pipeline also runs on English files:
+[English report for `dossier_017`](https://ubaidur404786.github.io/mini-clicdossier/report_en.html),
+status `OK`. All names and values are fake.
+
+Each file gets one status, first match wins:
+
+| Status       | Meaning                                              | Analyst action           |
+| ------------ | ---------------------------------------------------- | ------------------------ |
+| `INCOMPLETE` | a required document is missing                       | ask the client for it    |
+| `ALERT`      | documents disagree (name, address, old bill, salary) | look at the alert        |
+| `REVIEW`     | a value could not be read or checked                 | check that value by hand |
+| `OK`         | all documents present, all checks passed             | normal processing        |
+
+## 3. Results
+
+30 loan files per language (114 pages, 24 of them scanned), `qwen2.5:3b` on an RTX 3050 6 GB
+laptop GPU. Every number is computed against the ground truth by `eval/evaluate.py`.
+
+| Metric                                          | **French**      | English     |
+| ----------------------------------------------- | --------------- | ----------- |
+| Page classification, scanned pages (rules / ML) | **100 / 100 %** | 100 / 100 % |
+| Field extraction (end to end, exact match)      | **97.7 %**      | 98.4 %      |
+| Planted mismatches found / false alerts         | **6/6, 0**      | 6/6, 0      |
+| Files with the right status, alerts, missing    | **28/30**       | 28/30       |
+| Seconds per page (whole pipeline)               | **2.14**        | 2.11        |
+| Seconds per loan file (~4 pages)                | **~8**          | ~8          |
+
+- **The 2 missed French files ended as `REVIEW`, never as a wrong `OK`.** In each one a field
+  came back empty, so a check could not run, and the file went to a human. Causes: the LLM left
+  a name null, or OCR read `O` for `0` in an IBAN and the checksum rejected it.
+- **Time is mostly the LLM:** extraction ~75-85 %, OCR the rest.
+- **Memory:** the Python process peaks at ~220 MB of RAM. The model uses ~2.1 GB of VRAM.
+
+**Optimization I measured:** rendering scanned pages at 200 dpi instead of 300 made OCR **46 %
+faster** (54.4 s -> 29.5 s on the French set) with the same quality. Details are
+[below](#optimization-ocr-at-300---200-dpi).
+
+## 4. How it works
 
 ![Pipeline: ingest, OCR, classify, split, extract, validate, checks, report, evaluate](docs/architecture.svg)
 
-Each step has one clear input and output, and each one can be run and checked alone
-(`debug/debug_<step>.py`). The evaluation compares every step with the ground truth, so when
-a file is wrong I can see which step broke first.
+| #   | Step     | Tool                      | Output                                                 |
+| --- | -------- | ------------------------- | ------------------------------------------------------ |
+| 1   | ingest   | PyMuPDF                   | one dict per page: text layer, or a 200 dpi image      |
+| 2   | OCR      | Tesseract `fra+eng`       | text + confidence, only for scanned pages              |
+| 3   | classify | keyword rules / TF-IDF+LR | page type (`payslip`, `id_card`, ...)                  |
+| 4   | split    | Python                    | `{"payslip": [3], "id_card": [4], ...}`                |
+| 5   | extract  | qwen2.5:3b via Ollama     | JSON fields per document                               |
+| 6   | validate | Pydantic, regex, IBAN     | clean fields; a bad value becomes `None` + an error    |
+| 7-8 | checks   | Python                    | `OK` / `ALERT` / `UNKNOWN` per check, missing documents |
+| 9   | report   | Python                    | report JSON (for systems) + HTML (for the analyst)     |
+| 10  | evaluate | Python                    | accuracy per step, FR vs EN, time, memory              |
 
-## French and English
+Each step has one clear input and output and can be run alone (`debug/debug_<step>.py`).
+When a file is wrong, the evaluation shows which step broke first.
 
-The same pipeline handles both languages. To make the comparison fair, every loan file exists in
-French and in English **with the same person and the same values**; only the labels and formats
-change (`Net à payer : 2 145,30 €` / `Net pay: €2,145.30`, `31/08/2026` / `31 Aug 2026`).
+## 5. Why I built this
 
-| Step     | What changes with the language                                        |
-| -------- | --------------------------------------------------------------------- |
-| OCR      | nothing: Tesseract runs with `fra+eng` on every scanned page          |
-| Classify | keywords for both languages; the ML model is trained on both          |
-| Extract  | one prompt per language, same output fields                           |
-| Checks   | nothing: they compare values, not words                               |
-| Report   | titles and check names in the file's language; codes stay in English |
+I'm a junior ML / AI engineer and I wanted to learn document AI the way French banks and insurers
+need it:
 
-So a difference between the French and English results comes from the language, not from the data.
+- **the documents can't leave the company,** so the models run on the company's own servers;
+- **French documents first;**
+- **speed matters as much as accuracy,** because a bank processes thousands of files.
 
-## What the analyst gets
+So instead of a notebook demo, I built the full chain end to end with small open models on a
+6 GB laptop GPU, and I measured accuracy and speed at every step. I wanted to understand where
+such a system breaks, and why, not only make it work once.
 
-One JSON report (for other systems) and one HTML report (for a person) per file.
+## 6. French and English
 
-**French example: `dossier_014`, status `ALERT`.** The proof of address is 156 days old (max 90).
-Everything else matches.
+French is the main language. Every loan file also exists in English **with the same person and the
+same values**; only labels and formats change (`Net à payer : 2 145,30 €` / `Net pay: €2,145.30`,
+`31/08/2026` / `31 Aug 2026`). So a difference between the two comes from the language, not the data.
 
-![HTML report for dossier_014 in French: status ALERT, proof of address too old](docs/report_fr.svg)
+| Step     | What changes with the language                                         |
+| -------- | ---------------------------------------------------------------------- |
+| OCR      | nothing: Tesseract runs with `fra+eng` on every scanned page           |
+| Classify | keywords for both languages; the ML model is trained on both           |
+| Extract  | one prompt per language, same output fields                            |
+| Checks   | nothing: they compare values, not words                                |
+| Report   | titles and check names in the file's language; codes stay in English   |
 
-- **French report:** [open the HTML page](https://ubaidur404786.github.io/mini-clicdossier/report_fr.html)
-- **English example: `dossier_017`, status `OK`.** All 4 documents were found and every check passed.
-  [Open the HTML page](https://ubaidur404786.github.io/mini-clicdossier/report_en.html)
-  or [see the image](docs/report_en.svg).
-
-The HTML reports are served from the `docs/` folder with GitHub Pages. All names and values are fake.
-
-Possible statuses, first match wins:
-
-| Status       | Meaning                                                   | Analyst action               |
-| ------------ | --------------------------------------------------------- | ---------------------------- |
-| `INCOMPLETE` | a required document is missing                            | ask the client for it        |
-| `ALERT`      | documents disagree (name, address, old bill, salary)      | look at the alert            |
-| `REVIEW`     | a value could not be read or checked                      | check that value by hand     |
-| `OK`         | all documents present, all checks passed                  | normal processing            |
-
-## Results
-
-30 loan files per language (114 pages each), `qwen2.5:3b` on an RTX 3050 6 GB laptop GPU,
-OCR at 200 dpi.
-
-| Metric                                          | FR          | EN          |
-| ----------------------------------------------- | ----------- | ----------- |
-| Page classification, scanned pages (rules / ML) | 100 / 100 % | 100 / 100 % |
-| Field extraction (end to end, exact match)      | 97.7 %      | 98.4 %      |
-| Alerts found / false alerts                     | 6/6, 0      | 6/6, 0      |
-| Files with the right status, alerts, missing    | 28/30       | 28/30       |
-| Seconds per page (whole pipeline)               | 2.14        | 2.11        |
-
-- **The 4 missed files all ended as `REVIEW`, never as a wrong `OK`.** In each one a field came
-  back empty, so a check could not run. Causes: the LLM left a field null, or OCR read `O` for
-  `0` in an IBAN and the checksum rejected it.
-- **French and English score almost the same.** The small differences are within the LLM's
-  run-to-run noise.
-- **Time is mostly the LLM:** extraction ~75-85 %, OCR the rest, ingest and classification ~0.
-  A 4-page file takes ~7 s.
-- **Memory:** the Python process peaks at ~220 MB of RAM. The model uses ~2.1 GB of VRAM in Ollama.
-
-### Optimization: OCR at 300 -> 200 dpi
-
-I measured OCR alone on the 24 scanned pages (are the true name, IBAN, postal code and ID number
-in the raw OCR text?), then re-ran the full evaluation.
-
-| dpi | s per scanned page | mean OCR conf | true values found |
-| --- | ------------------ | ------------- | ----------------- |
-| 300 | 2.54               | 0.948         | 93.8 %            |
-| 200 | 1.36               | 0.943         | 95.8 %            |
-| 150 | 1.02               | 0.940         | 95.8 %            |
-
-- **200 dpi made the OCR step 46 % faster** (54.4 s -> 29.5 s for the French set), with the
-  same quality.
-- **I did not pick 150:** the gain is small, confidence keeps dropping, and real scans are
-  worse than mine.
-- **Seconds per page for the whole pipeline did not move** (2.15 -> 2.14). OCR was only ~22 %
-  of the time, so the next real gain is in the LLM step.
-
-## Why OCR + LLM, and what comes next (VLM)
-
-I split the work between cheap tools and the LLM:
+## 7. Why OCR + LLM, and what comes next (VLM)
 
 - **OCR (Tesseract, CPU)** only runs on scanned pages. Pages with a text layer skip it.
-- **The small LLM (qwen2.5:3b, GPU)** turns the text of one document into JSON fields.
-  It handles different layouts and both languages, where regex templates would break.
+- **The small LLM** turns the text of one document into JSON fields. It handles different layouts
+  and both languages, where regex templates would break.
 - **Plain code** does everything that must be exact: converting amounts and dates, validation
   (types, ranges, IBAN checksum) and the cross-document checks. The LLM never has the last word.
 
@@ -141,7 +135,23 @@ tables, stamps and handwriting that OCR loses. But it is heavier and slower than
 documents whose fields fail validation. Most pages keep the fast path, and only the hard pages
 pay the cost of the VLM.
 
-## From pipeline to product
+### Optimization: OCR at 300 -> 200 dpi
+
+I measured OCR alone on the 24 French scanned pages (are the true name, IBAN, postal code and
+ID number in the raw OCR text?), then re-ran the full evaluation.
+
+| dpi | s per scanned page | mean OCR conf | true values found |
+| --- | ------------------ | ------------- | ----------------- |
+| 300 | 2.54               | 0.948         | 93.8 %            |
+| 200 | 1.36               | 0.943         | 95.8 %            |
+| 150 | 1.02               | 0.940         | 95.8 %            |
+
+- **200 dpi made the OCR step 46 % faster,** with the same quality.
+- **I did not pick 150:** confidence keeps dropping, and real scans are worse than mine.
+- **Seconds per page for the whole pipeline did not move** (2.15 -> 2.14). OCR was only ~22 %
+  of the time, so the next real gain is in the LLM step.
+
+## 8. From pipeline to product
 
 This project is the processing core, not a full application. `run(pdf_path, lang)` takes one PDF
 and returns the report as a dict, so it can be wrapped without changing the steps:
@@ -149,11 +159,11 @@ and returns the report as a dict, so it can be wrapped without changing the step
 - **an API** (e.g. FastAPI): upload a loan file, get a job id, then read the JSON report when it
   is ready. A queue makes the GPU handle one file at a time;
 - **a web screen for analysts:** files sorted by status, the page image next to the extracted
-  values, and a way to correct a value. Corrections become new test data for the evaluation;
+  values, and a way to correct a value. Corrections become new test data;
 - **logs of every decision** for audits;
-- **deployment on the bank's own Linux GPU servers**, so documents never leave the bank.
+- **deployment on the bank's own Linux GPU servers,** so documents never leave the bank.
 
-## Design choices
+## 9. Design choices
 
 - **A value that breaks a rule becomes `None` + an error, it is not kept.** A wrong value would
   give a false alert later; an empty one only gives "can't check" (`REVIEW`).
@@ -161,9 +171,9 @@ and returns the report as a dict, so it can be wrapped without changing the step
 - **Names and addresses are compared after normalization** (upper case, no accents) with a
   similarity score. Exact matching on OCR + LLM output gives false alarms.
 - **Codes are always English:** field names, alert codes and statuses. Only the report text is
-  French or English, so the evaluation compares the same codes for both languages.
+  French or English, so the evaluation compares the same codes in both languages.
 
-## Data
+## 10. Data
 
 I used synthetic data only. Real loan documents are personal data (GDPR) and not public,
 and synthetic data gives exact ground truth for free.
@@ -182,7 +192,7 @@ and synthetic data gives exact ground truth for free.
   alerts) and is used by the evaluation.
 - **Not in the repo:** the generated PDFs. The scripts rebuild them (see below).
 
-## How to run
+## 11. How to run
 
 Needs Python 3.11, [Tesseract](https://github.com/tesseract-ocr/tesseract) with French and English
 data, and [Ollama](https://ollama.com). Commands are for Windows PowerShell; on Linux activate the
@@ -228,7 +238,7 @@ python -m eval.dpi_test fr
 Reports go to `outputs/`, evaluation results to `outputs/eval/`.
 Before measuring speed, check that `ollama ps` shows `100% GPU`.
 
-## Project structure
+## 12. Project structure
 
 ```
 src/generate/        synthetic people, pdf documents, scan effects, loan files
@@ -239,7 +249,7 @@ data/ground_truth/   true values for each person
 docs/                pipeline diagram and example reports (fr, en)
 ```
 
-## Limits
+## 13. Limits
 
 - **Synthetic data with one fixed template per document type.** 100 % classification here shows
   the code works, not that it generalizes to real documents.
@@ -251,12 +261,11 @@ docs/                pipeline diagram and example reports (fr, en)
 - **Every document is one page,** and two documents of the same type (two payslips) would be merged.
 - **The short detail messages in the report** ("bill is 156 days old") are English in both versions.
 
-## Next steps
+## 14. Next steps
 
-- **VLM fallback** for low-confidence pages and for documents that fail validation (see above).
+- **VLM fallback** for low-confidence pages and for documents that fail validation (see section 7).
 - **A faster LLM step:** shorter prompts, one call per file instead of one per document.
-- **Real scans:** test OCR and extraction on real scans (e.g. the SROIE receipts dataset) and on
-  harder scan effects.
+- **Real scans:** test on real scans (e.g. the SROIE receipts dataset) and on harder scan effects.
 - **More document types:** more templates, and boundary detection for multi-page and repeated
   documents.
 - **An API and an analyst screen** on top of `run()`.
