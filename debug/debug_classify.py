@@ -3,53 +3,60 @@ import time
 from collections import Counter
 from pathlib import Path
 
-from src.classify import classify, rule_scores
+from src.classify import classify, load_model
 from src.ingest import ingest
 from src.ocr import ocr_if_needed
 
 LANG = "en"
-MAX_FILES = None      # e.g. 3 for a quick run
-SKIP_SCANNED = False   # True skips ocr pages (fast), False runs ocr on them (~2.4 s/page)
+MAX_FILES = None
+TEST_ON = "ocr"       # "ocr" = scanned pages, never seen in training. "all" = every page
 LOW_CONF = 0.6
-SHOW_LINES = 3
+TOP_WORDS = 5
 
-pdfs = sorted(Path("data/loan_files", LANG).glob("*.pdf"))[:MAX_FILES]
-print(f"{len(pdfs)} files, lang={LANG}, skip_scanned={SKIP_SCANNED}")
+model = load_model()
 
-total = 0
-correct = 0
-errors = []
+# the words with the biggest weight for each type
+vectorizer, lr = model[0], model[-1]
+words = vectorizer.get_feature_names_out()
+print("vocabulary size:", len(words))
+for i, doc_type in enumerate(lr.classes_):
+    top = lr.coef_[i].argsort()[::-1][:TOP_WORDS]
+    print(f"  {doc_type:17} {[words[j] for j in top]}")
+
+correct = Counter()
+confs = {"rules": [], "ml": []}
 low = []
-confusion = Counter()
+errors = []
+n = 0
 start = time.perf_counter()
 
+pdfs = sorted(Path("data/loan_files", LANG).glob("*.pdf"))[:MAX_FILES]
 for pdf in pdfs:
-    labels = json.load(open(pdf.with_suffix(".json"), encoding="utf-8"))
+    with open(pdf.with_suffix(".json"), encoding="utf-8") as f:
+        labels = json.load(f)
     for page, label in zip(ingest(pdf), labels["pages"]):
-        if SKIP_SCANNED and page["source"] == "ocr":
+        if TEST_ON == "ocr" and page["source"] != "ocr":
             continue
-        page = classify(ocr_if_needed(page))
-        true_type = label["doc_type"]
-        total += 1
-        if page["doc_type"] == true_type:
-            correct += 1
-        else:
-            confusion[(true_type, page["doc_type"])] += 1
-            errors.append((pdf.name, page["page_num"], true_type, page["doc_type"],
-                           rule_scores(page["text"]), page["text"]))
-        if page["type_conf"] < LOW_CONF:
-            low.append((pdf.name, page["page_num"], true_type, page["doc_type"], page["type_conf"]))
+        page = ocr_if_needed(page)
+        n += 1
+        for method, m in [("rules", None), ("ml", model)]:
+            p = classify(dict(page), m)
+            confs[method].append(p["type_conf"])
+            if p["doc_type"] == label["doc_type"]:
+                correct[method] += 1
+            else:
+                errors.append((pdf.stem, p["page_num"], method, label["doc_type"], p["doc_type"], p["type_conf"]))
+            if p["type_conf"] < LOW_CONF:
+                low.append((pdf.stem, p["page_num"], method, p["doc_type"], p["type_conf"]))
 
-seconds = time.perf_counter() - start
-print(f"\naccuracy {correct}/{total} = {correct / total:.3f} | {seconds:.2f} s total")
-print(f"low conf (< {LOW_CONF}): {len(low)}")
-for item in low:
-    print("  ", item)
+print(f"\n{LANG} | test on: {TEST_ON} | {n} pages | {time.perf_counter() - start:.2f} s")
+for method in ["rules", "ml"]:
+    c = confs[method]
+    print(f"  {method:5} accuracy {correct[method]}/{n}  conf mean {sum(c) / len(c):.3f}  min {min(c):.3f}")
 
-print("\nconfusion (true -> predicted):")
-for (true_type, pred), n in confusion.items():
-    print(f"  {true_type} -> {pred}: {n}")
-
-for name, num, true_type, pred, scores, text in errors:
-    print(f"\n{name} p{num} | true {true_type} | predicted {pred} | {scores}")
-    print("\n".join(text.strip().splitlines()[:SHOW_LINES]))
+print("\nlow conf:")
+for row in low:
+    print("  ", row)
+print("\nerrors (file, page, method, true, pred, conf):")
+for row in errors:
+    print("  ", row)
