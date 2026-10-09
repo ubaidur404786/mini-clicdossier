@@ -1,0 +1,220 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 806" width="1180" height="806" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrow-next" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+  <style>
+    .title { font-size: 22px; font-weight: 700; fill: #0f172a; }
+    .sub { font-size: 14px; fill: #475569; }
+    .head { font-size: 13px; font-weight: 700; fill: #ffffff; letter-spacing: 0.5px; }
+    .tool { font-size: 12px; font-weight: 700; }
+    .txt { font-size: 12px; fill: #334155; }
+    .ex { font-size: 11px; fill: #0f172a; font-family: Consolas, Menlo, monospace; }
+    .flow { stroke: #64748b; stroke-width: 2; fill: none; }
+    .big { font-size: 18px; font-weight: 700; fill: #0f172a; }
+    .small { font-size: 11px; fill: #475569; }
+    .light { font-size: 11px; fill: #cbd5e1; }
+  </style>
+
+  <!-- white background, readable in github dark mode -->
+  <rect width="1180" height="806" fill="#ffffff"/>
+
+  <text x="20" y="36" class="title">Mini ClicDossier: loan file check pipeline</text>
+  <text x="20" y="60" class="sub">One mixed PDF in (FR or EN, some pages scanned) → checked report out. OCR + small LLM, 100% local.</text>
+
+  <!-- next step: vlm fallback -->
+  <rect x="490" y="92" width="200" height="62" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="502" y="112" class="tool" fill="#7c3aed">NEXT STEP: VLM fallback</text>
+  <text x="502" y="130" class="txt">hard scans → small vision</text>
+  <text x="502" y="147" class="txt">model, only when needed</text>
+  <path d="M590 190 V158" stroke="#7c3aed" stroke-width="2" stroke-dasharray="5 4" fill="none" marker-end="url(#arrow-next)"/>
+  <text x="598" y="180" class="small">low OCR confidence</text>
+
+  <!-- row 1 -->
+  <rect x="20" y="190" width="200" height="180" rx="10" fill="#f8fafc"/>
+  <rect x="20" y="190" width="200" height="34" rx="10" fill="#334155"/>
+  <rect x="20" y="212" width="200" height="12" fill="#334155"/>
+  <rect x="20" y="190" width="200" height="180" rx="10" fill="none" stroke="#334155" stroke-width="1.5"/>
+  <text x="32" y="212" class="head">INPUT</text>
+  <text x="32" y="246" class="tool" fill="#334155">Loan file (PDF)</text>
+  <text x="32" y="268" class="txt">1 mixed PDF, FR or EN</text>
+  <text x="32" y="286" class="txt">ID card, payslip,</text>
+  <text x="32" y="304" class="txt">proof of address,</text>
+  <text x="32" y="322" class="txt">bank statement</text>
+  <text x="32" y="340" class="txt">some pages scanned</text>
+  <text x="32" y="358" class="ex">dossier_014.pdf</text>
+
+  <rect x="255" y="190" width="200" height="180" rx="10" fill="#eff6ff"/>
+  <rect x="255" y="190" width="200" height="34" rx="10" fill="#1d4ed8"/>
+  <rect x="255" y="212" width="200" height="12" fill="#1d4ed8"/>
+  <rect x="255" y="190" width="200" height="180" rx="10" fill="none" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="267" y="212" class="head">1  INGEST</text>
+  <text x="267" y="246" class="tool" fill="#1d4ed8">PyMuPDF</text>
+  <text x="267" y="268" class="txt">PDF → one dict per page</text>
+  <text x="267" y="286" class="txt">text layer? keep the text</text>
+  <text x="267" y="304" class="txt">no text? 200 dpi gray</text>
+  <text x="267" y="322" class="txt">image, OCR needed</text>
+  <text x="267" y="358" class="ex">p1 pdf_text · p3 ocr</text>
+
+  <rect x="490" y="190" width="200" height="180" rx="10" fill="#eff6ff"/>
+  <rect x="490" y="190" width="200" height="34" rx="10" fill="#1d4ed8"/>
+  <rect x="490" y="212" width="200" height="12" fill="#1d4ed8"/>
+  <rect x="490" y="190" width="200" height="180" rx="10" fill="none" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="502" y="212" class="head">2  OCR</text>
+  <text x="502" y="246" class="tool" fill="#1d4ed8">Tesseract fra+eng (CPU)</text>
+  <text x="502" y="268" class="txt">image → text + confidence</text>
+  <text x="502" y="286" class="txt">only pages without text</text>
+  <text x="502" y="304" class="txt">psm 6: reads row by row</text>
+  <text x="502" y="340" class="ex">"Net à payer 2 145,30 €"</text>
+  <text x="502" y="358" class="ex">conf 0.94</text>
+
+  <rect x="725" y="190" width="200" height="180" rx="10" fill="#f0fdfa"/>
+  <rect x="725" y="190" width="200" height="34" rx="10" fill="#0f766e"/>
+  <rect x="725" y="212" width="200" height="12" fill="#0f766e"/>
+  <rect x="725" y="190" width="200" height="180" rx="10" fill="none" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="737" y="212" class="head">3  CLASSIFY</text>
+  <text x="737" y="246" class="tool" fill="#0f766e">Rules / TF-IDF + LogReg</text>
+  <text x="737" y="268" class="txt">page text → page type</text>
+  <text x="737" y="286" class="txt">keyword rules baseline</text>
+  <text x="737" y="304" class="txt">ML model to compare</text>
+  <text x="737" y="322" class="txt">4 types + unknown</text>
+  <text x="737" y="358" class="ex">payslip (0.88)</text>
+
+  <rect x="960" y="190" width="200" height="180" rx="10" fill="#f0fdfa"/>
+  <rect x="960" y="190" width="200" height="34" rx="10" fill="#0f766e"/>
+  <rect x="960" y="212" width="200" height="12" fill="#0f766e"/>
+  <rect x="960" y="190" width="200" height="180" rx="10" fill="none" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="972" y="212" class="head">4  SPLIT</text>
+  <text x="972" y="246" class="tool" fill="#0f766e">Python</text>
+  <text x="972" y="268" class="txt">pages → documents</text>
+  <text x="972" y="286" class="txt">group pages by type</text>
+  <text x="972" y="304" class="txt">unknown pages kept</text>
+  <text x="972" y="340" class="ex">{payslip: [3],</text>
+  <text x="972" y="358" class="ex"> id_card: [4], …}</text>
+
+  <path d="M222 280 H251" class="flow" marker-end="url(#arrow)"/>
+  <path d="M457 280 H486" class="flow" marker-end="url(#arrow)"/>
+  <path d="M692 280 H721" class="flow" marker-end="url(#arrow)"/>
+  <path d="M927 280 H956" class="flow" marker-end="url(#arrow)"/>
+
+  <!-- row 1 to row 2 -->
+  <path d="M1060 372 V395 H120 V416" class="flow" marker-end="url(#arrow)"/>
+
+  <!-- row 2 -->
+  <rect x="20" y="420" width="200" height="180" rx="10" fill="#f5f3ff"/>
+  <rect x="20" y="420" width="200" height="34" rx="10" fill="#6d28d9"/>
+  <rect x="20" y="442" width="200" height="12" fill="#6d28d9"/>
+  <rect x="20" y="420" width="200" height="180" rx="10" fill="none" stroke="#6d28d9" stroke-width="1.5"/>
+  <text x="32" y="442" class="head">5  EXTRACT</text>
+  <text x="32" y="476" class="tool" fill="#6d28d9">qwen2.5:3b · Ollama · GPU</text>
+  <text x="32" y="498" class="txt">document → JSON fields</text>
+  <text x="32" y="516" class="txt">one prompt per language</text>
+  <text x="32" y="534" class="txt">format=json, temp 0</text>
+  <text x="32" y="552" class="txt">LLM copies, code converts</text>
+  <text x="32" y="588" class="ex">net_salary: 1605.62</text>
+
+  <rect x="255" y="420" width="200" height="180" rx="10" fill="#f0fdf4"/>
+  <rect x="255" y="420" width="200" height="34" rx="10" fill="#15803d"/>
+  <rect x="255" y="442" width="200" height="12" fill="#15803d"/>
+  <rect x="255" y="420" width="200" height="180" rx="10" fill="none" stroke="#15803d" stroke-width="1.5"/>
+  <text x="267" y="442" class="head">6  VALIDATE</text>
+  <text x="267" y="476" class="tool" fill="#15803d">Pydantic · regex · IBAN</text>
+  <text x="267" y="498" class="txt">never trust the LLM</text>
+  <text x="267" y="516" class="txt">types, ranges, formats</text>
+  <text x="267" y="534" class="txt">IBAN mod-97 checksum</text>
+  <text x="267" y="552" class="txt">bad value → None + error</text>
+  <text x="267" y="588" class="ex">iban FRO8… → rejected</text>
+
+  <rect x="490" y="420" width="200" height="180" rx="10" fill="#f0fdf4"/>
+  <rect x="490" y="420" width="200" height="34" rx="10" fill="#15803d"/>
+  <rect x="490" y="442" width="200" height="12" fill="#15803d"/>
+  <rect x="490" y="420" width="200" height="180" rx="10" fill="none" stroke="#15803d" stroke-width="1.5"/>
+  <text x="502" y="442" class="head">7-8  CHECKS</text>
+  <text x="502" y="476" class="tool" fill="#15803d">Cross-document rules</text>
+  <text x="502" y="498" class="txt">same name on all docs</text>
+  <text x="502" y="516" class="txt">same address</text>
+  <text x="502" y="534" class="txt">bill &lt; 90 days old</text>
+  <text x="502" y="552" class="txt">salary on statement</text>
+  <text x="502" y="570" class="txt">all 4 documents present?</text>
+  <text x="502" y="588" class="ex">OK · ALERT · UNKNOWN</text>
+
+  <rect x="725" y="420" width="200" height="180" rx="10" fill="#fffbeb"/>
+  <rect x="725" y="420" width="200" height="34" rx="10" fill="#b45309"/>
+  <rect x="725" y="442" width="200" height="12" fill="#b45309"/>
+  <rect x="725" y="420" width="200" height="180" rx="10" fill="none" stroke="#b45309" stroke-width="1.5"/>
+  <text x="737" y="442" class="head">9  REPORT</text>
+  <text x="737" y="476" class="tool" fill="#b45309">JSON + HTML</text>
+  <text x="737" y="498" class="txt">one status per file:</text>
+  <text x="737" y="516" class="txt">INCOMPLETE › ALERT ›</text>
+  <text x="737" y="534" class="txt">REVIEW › OK</text>
+  <text x="737" y="552" class="txt">report.json → systems</text>
+  <text x="737" y="570" class="txt">report.html → analyst</text>
+  <text x="737" y="588" class="ex">dossier_014_fr.html</text>
+
+  <rect x="960" y="420" width="200" height="180" rx="10" fill="#f8fafc"/>
+  <rect x="960" y="420" width="200" height="34" rx="10" fill="#334155"/>
+  <rect x="960" y="442" width="200" height="12" fill="#334155"/>
+  <rect x="960" y="420" width="200" height="180" rx="10" fill="none" stroke="#334155" stroke-width="2.5"/>
+  <text x="972" y="442" class="head">OUTPUT</text>
+  <text x="972" y="476" class="tool" fill="#334155">Decision for the analyst</text>
+  <text x="972" y="498" class="ex">status: ALERT</text>
+  <text x="972" y="516" class="ex">bill 156 days old</text>
+  <text x="972" y="534" class="ex">missing: none</text>
+  <text x="972" y="552" class="txt">4 documents found</text>
+  <text x="972" y="570" class="txt">~2 s per page</text>
+  <text x="972" y="588" class="txt">100% local, no cloud</text>
+
+  <path d="M222 510 H251" class="flow" marker-end="url(#arrow)"/>
+  <path d="M457 510 H486" class="flow" marker-end="url(#arrow)"/>
+  <path d="M692 510 H721" class="flow" marker-end="url(#arrow)"/>
+  <path d="M927 510 H956" class="flow" marker-end="url(#arrow)"/>
+
+  <!-- evaluation -->
+  <path d="M1060 602 V632" class="flow" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <rect x="20" y="636" width="1140" height="104" rx="10" fill="#f8fafc" stroke="#0f172a" stroke-width="1.5"/>
+  <rect x="20" y="636" width="1140" height="32" rx="10" fill="#0f172a"/>
+  <rect x="20" y="656" width="1140" height="12" fill="#0f172a"/>
+  <text x="32" y="657" class="head">10  EVALUATE</text>
+  <text x="150" y="657" class="light">every step compared with the ground truth (synthetic data, exact answers), 30 files per language</text>
+
+  <rect x="36" y="678" width="172" height="52" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="122" y="700" class="big" text-anchor="middle">100 %</text>
+  <text x="122" y="720" class="small" text-anchor="middle">page classification</text>
+  <rect x="222" y="678" width="172" height="52" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="308" y="700" class="big" text-anchor="middle">97.7 / 98.4 %</text>
+  <text x="308" y="720" class="small" text-anchor="middle">fields correct, FR / EN</text>
+  <rect x="408" y="678" width="172" height="52" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="494" y="700" class="big" text-anchor="middle">6 / 6</text>
+  <text x="494" y="720" class="small" text-anchor="middle">alerts found, 0 false</text>
+  <rect x="594" y="678" width="172" height="52" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="680" y="700" class="big" text-anchor="middle">28 / 30</text>
+  <text x="680" y="720" class="small" text-anchor="middle">files fully right</text>
+  <rect x="780" y="678" width="172" height="52" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="866" y="700" class="big" text-anchor="middle">2.1 s</text>
+  <text x="866" y="720" class="small" text-anchor="middle">per page, end to end</text>
+  <rect x="966" y="678" width="172" height="52" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="1052" y="700" class="big" text-anchor="middle">−46 %</text>
+  <text x="1052" y="720" class="small" text-anchor="middle">OCR time at 200 dpi</text>
+
+  <!-- legend -->
+  <rect x="20" y="756" width="12" height="12" rx="2" fill="#334155"/>
+  <text x="38" y="767" class="small">Input / output</text>
+  <rect x="151" y="756" width="12" height="12" rx="2" fill="#1d4ed8"/>
+  <text x="169" y="767" class="small">Read: PyMuPDF, Tesseract</text>
+  <rect x="347" y="756" width="12" height="12" rx="2" fill="#0f766e"/>
+  <text x="365" y="767" class="small">Understand: rules, ML</text>
+  <rect x="524" y="756" width="12" height="12" rx="2" fill="#6d28d9"/>
+  <text x="542" y="767" class="small">Extract: small LLM (GPU)</text>
+  <rect x="720" y="756" width="12" height="12" rx="2" fill="#15803d"/>
+  <text x="738" y="767" class="small">Verify: plain code</text>
+  <rect x="884" y="756" width="12" height="12" rx="2" fill="#b45309"/>
+  <text x="902" y="767" class="small">Decide: report</text>
+  <rect x="1015" y="756" width="12" height="12" rx="2" fill="none" stroke="#7c3aed" stroke-dasharray="3 2"/>
+  <text x="1033" y="767" class="small">Next step (VLM)</text>
+
+  <text x="590" y="794" class="small" text-anchor="middle">Python 3.11 · PyMuPDF · Tesseract 5 · scikit-learn · Ollama qwen2.5:3b · Pydantic · RTX 3050 6 GB laptop GPU</text>
+</svg>

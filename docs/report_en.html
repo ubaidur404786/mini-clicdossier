@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loan file report - dossier_017.pdf</title>
+<style>
+body { margin: 0; background: #f4f5f7; color: #1f2933; font: 14px/1.5 "Segoe UI", Arial, sans-serif; }
+header { background: #1f2a44; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; }
+header b { letter-spacing: 1px; }
+main, footer { max-width: 980px; margin: 24px auto; padding: 0 16px; }
+h1 { font-size: 22px; margin: 0; }
+h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #52606d; margin: 28px 0 10px; }
+.sub { color: #52606d; margin: 2px 0 20px; }
+.summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.docs { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+.box, .card { background: #fff; border: 1px solid #d9dde3; border-radius: 6px; overflow: hidden; }
+.box { padding: 12px 16px; }
+.box small { display: block; color: #52606d; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; }
+.box div { font-size: 15px; font-weight: 600; margin-top: 4px; }
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; font-size: 12px; color: #52606d; background: #f9fafb; }
+th, td { padding: 8px 12px; border-bottom: 1px solid #eceff3; overflow-wrap: anywhere; }
+tr:last-child td { border-bottom: none; }
+.card h3 { margin: 0; padding: 10px 12px; font-size: 14px; background: #f9fafb;
+           border-bottom: 1px solid #d9dde3; display: flex; justify-content: space-between; }
+.card h3 span { font-weight: normal; color: #52606d; }
+.key { color: #52606d; width: 40%; font-family: Consolas, monospace; font-size: 12px; }
+.badge { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 12px; font-weight: 600; }
+.OK { background: #e3f4e8; color: #1e6b3a; }
+.ALERT, .INCOMPLETE { background: #fbe4e2; color: #a12a1f; }
+.UNKNOWN, .REVIEW { background: #fdf3d8; color: #8a5a00; }
+.error td { background: #fbe4e2; }
+footer { color: #7b8794; font-size: 12px; }
+</style>
+</head>
+<body>
+<header><b>MINI CLICDOSSIER</b><span>dossier_017.pdf · EN</span></header>
+<main>
+<h1>Loan file report : dossier_017.pdf</h1>
+<p class="sub">Automatic check of a loan file</p>
+<div class="summary">
+<div class="box"><small>Status</small><div><span class="badge OK">OK</span></div></div>
+<div class="box"><small>Missing documents</small><div>none</div></div>
+<div class="box"><small>Alerts</small><div>none</div></div>
+<div class="box"><small>Processing time</small><div>7.6 s</div></div>
+</div>
+<h2>Checks</h2>
+<div class="card"><table>
+<tr><th>Check</th><th>Result</th><th>Detail</th></tr>
+<tr><td>Same name on documents</td><td><span class='badge OK'>OK</span></td><td>4 documents, same name</td></tr>
+<tr><td>Same address (bill and statement)</td><td><span class='badge OK'>OK</span></td><td>same address (1.00)</td></tr>
+<tr><td>Proof of address under 90 days</td><td><span class='badge OK'>OK</span></td><td>bill is 57 days old</td></tr>
+<tr><td>Salary on bank statement</td><td><span class='badge OK'>OK</span></td><td>net 2089.14 vs credit 2089.14</td></tr>
+</table></div>
+<h2>Documents</h2>
+<div class="docs">
+<section class='card'><h3>Payslip<span>page(s) 1</span></h3>
+<table>
+<tr><td class='key'>last_name</td><td>BERTIN</td></tr>
+<tr><td class='key'>first_name</td><td>Alex</td></tr>
+<tr><td class='key'>employer</td><td>Hubert</td></tr>
+<tr><td class='key'>pay_period</td><td>2026-08</td></tr>
+<tr><td class='key'>gross_salary</td><td>2678.38</td></tr>
+<tr><td class='key'>net_salary</td><td>2089.14</td></tr>
+</table></section>
+<section class='card'><h3>ID card<span>page(s) 2</span></h3>
+<table>
+<tr><td class='key'>last_name</td><td>BERTIN</td></tr>
+<tr><td class='key'>first_name</td><td>Alex</td></tr>
+<tr><td class='key'>birth_date</td><td>2002-02-05</td></tr>
+<tr><td class='key'>id_number</td><td>J60FKHMY4</td></tr>
+<tr><td class='key'>expiry_date</td><td>2033-05-19</td></tr>
+</table></section>
+<section class='card'><h3>Bank statement<span>page(s) 3</span></h3>
+<table>
+<tr><td class='key'>last_name</td><td>BERTIN</td></tr>
+<tr><td class='key'>first_name</td><td>Alex</td></tr>
+<tr><td class='key'>address_line</td><td>67, avenue Roger Chrétien</td></tr>
+<tr><td class='key'>postal_code</td><td>53358</td></tr>
+<tr><td class='key'>city</td><td>Sainte AlfredVille</td></tr>
+<tr><td class='key'>iban</td><td>FR0310033092327193745299124</td></tr>
+<tr><td class='key'>statement_date</td><td>2026-08-31</td></tr>
+<tr><td class='key'>salary_credit</td><td>2089.14</td></tr>
+</table></section>
+<section class='card'><h3>Proof of address<span>page(s) 4</span></h3>
+<table>
+<tr><td class='key'>last_name</td><td>BERTIN</td></tr>
+<tr><td class='key'>first_name</td><td>Alex</td></tr>
+<tr><td class='key'>address_line</td><td>67, avenue Roger Chrétien</td></tr>
+<tr><td class='key'>postal_code</td><td>53358</td></tr>
+<tr><td class='key'>city</td><td>Sainte AlfredVille</td></tr>
+<tr><td class='key'>supplier</td><td>TotalEnergies</td></tr>
+<tr><td class='key'>issue_date</td><td>2026-08-13</td></tr>
+<tr><td class='key'>amount_due</td><td>166.75</td></tr>
+</table></section>
+</div>
+</main>
+<footer>Report generated automatically, to be confirmed by an analyst. 100% local processing.</footer>
+</body>
+</html>

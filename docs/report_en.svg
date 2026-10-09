@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 1302" width="1100" height="1302">
+<style>
+  text { font-family: "Segoe UI", Helvetica, Arial, sans-serif; }
+  .brand { font-size: 15px; font-weight: 700; fill: #ffffff; letter-spacing: 1px; }
+  .hdr { font-size: 14px; fill: #ffffff; }
+  .h1 { font-size: 22px; font-weight: 700; fill: #1f2933; }
+  .h2 { font-size: 13px; font-weight: 700; fill: #52606d; letter-spacing: 1px; }
+  .muted { font-size: 13px; fill: #52606d; }
+  .label { font-size: 11px; fill: #52606d; letter-spacing: 1px; }
+  .value { font-size: 15px; font-weight: 600; fill: #1f2933; }
+  .th { font-size: 12px; font-weight: 700; fill: #52606d; }
+  .td { font-size: 13px; fill: #1f2933; }
+  .doc { font-size: 14px; font-weight: 700; fill: #1f2933; }
+  .key { font-size: 11px; fill: #52606d; font-family: Consolas, Menlo, monospace; }
+  .badge { font-size: 12px; font-weight: 700; }
+  .card { fill: #ffffff; stroke: #d9dde3; }
+  .sep { stroke: #eceff3; }
+  .foot { font-size: 12px; fill: #7b8794; }
+</style>
+<rect width="1100" height="1302" fill="#f4f5f7"/>
+<rect x="0" y="0" width="1100" height="48" fill="#1f2a44"/>
+<text x="32" y="30" class="brand">MINI CLICDOSSIER</text>
+<text x="1068" y="30" class="hdr" text-anchor="end">dossier_017.pdf · EN</text>
+<text x="60" y="98" class="h1">Loan file report : dossier_017.pdf</text>
+<text x="60" y="122" class="muted">Automatic check of a loan file</text>
+<rect x="60.0" y="150" width="236" height="70" rx="6" class="card"/>
+<text x="76.0" y="174" class="label">STATUS</text>
+<rect x="76.0" y="185" width="30" height="22" rx="11" fill="#e3f4e8"/><text x="91.0" y="200" class="badge" fill="#1e6b3a" text-anchor="middle">OK</text>
+<rect x="308.66999999999996" y="150" width="236" height="70" rx="6" class="card"/>
+<text x="324.66999999999996" y="174" class="label">MISSING DOCUMENTS</text>
+<text x="324.66999999999996" y="200" class="value">none</text>
+<rect x="557.3399999999999" y="150" width="236" height="70" rx="6" class="card"/>
+<text x="573.3399999999999" y="174" class="label">ALERTS</text>
+<text x="573.3399999999999" y="200" class="value">none</text>
+<rect x="806.01" y="150" width="236" height="70" rx="6" class="card"/>
+<text x="822.01" y="174" class="label">PROCESSING TIME</text>
+<text x="822.01" y="200" class="value">7.6 s</text>
+<text x="60" y="260" class="h2">CHECKS</text>
+<rect x="60" y="274" width="980" height="190" rx="6" class="card"/>
+<rect x="61" y="275" width="978" height="33" rx="5" fill="#f9fafb"/>
+<text x="73" y="296" class="th">Check</text>
+<text x="572" y="296" class="th">Result</text>
+<text x="705" y="296" class="th">Detail</text>
+<line x1="60" y1="308" x2="1040" y2="308" class="sep"/>
+<text x="73" y="333" class="td">Same name on documents</text>
+<rect x="572" y="318" width="30" height="22" rx="11" fill="#e3f4e8"/><text x="587.0" y="333" class="badge" fill="#1e6b3a" text-anchor="middle">OK</text>
+<text x="705" y="333" class="td">4 documents, same name</text>
+<line x1="60" y1="347" x2="1040" y2="347" class="sep"/>
+<text x="73" y="372" class="td">Same address (bill and statement)</text>
+<rect x="572" y="357" width="30" height="22" rx="11" fill="#e3f4e8"/><text x="587.0" y="372" class="badge" fill="#1e6b3a" text-anchor="middle">OK</text>
+<text x="705" y="372" class="td">same address (1.00)</text>
+<line x1="60" y1="386" x2="1040" y2="386" class="sep"/>
+<text x="73" y="411" class="td">Proof of address under 90 days</text>
+<rect x="572" y="396" width="30" height="22" rx="11" fill="#e3f4e8"/><text x="587.0" y="411" class="badge" fill="#1e6b3a" text-anchor="middle">OK</text>
+<text x="705" y="411" class="td">bill is 57 days old</text>
+<line x1="60" y1="425" x2="1040" y2="425" class="sep"/>
+<text x="73" y="450" class="td">Salary on bank statement</text>
+<rect x="572" y="435" width="30" height="22" rx="11" fill="#e3f4e8"/><text x="587.0" y="450" class="badge" fill="#1e6b3a" text-anchor="middle">OK</text>
+<text x="705" y="450" class="td">net 2089.14 vs credit 2089.14</text>
+<text x="60" y="504" class="h2">DOCUMENTS</text>
+<rect x="60.0" y="518" width="318.67" height="368" rx="6" class="card"/>
+<rect x="61.0" y="519" width="316.67" height="40" rx="5" fill="#f9fafb"/>
+<line x1="60.0" y1="559" x2="378.67" y2="559" stroke="#d9dde3"/>
+<text x="73.0" y="544" class="doc">Payslip</text>
+<text x="365.67" y="544" class="muted" text-anchor="end">page(s) 1</text>
+<text x="73.0" y="583" class="key">last_name</text>
+<text x="200.0" y="583" class="td">BERTIN</text>
+<line x1="60.0" y1="595" x2="378.67" y2="595" class="sep"/>
+<text x="73.0" y="619" class="key">first_name</text>
+<text x="200.0" y="619" class="td">Alex</text>
+<line x1="60.0" y1="631" x2="378.67" y2="631" class="sep"/>
+<text x="73.0" y="655" class="key">employer</text>
+<text x="200.0" y="655" class="td">Hubert</text>
+<line x1="60.0" y1="667" x2="378.67" y2="667" class="sep"/>
+<text x="73.0" y="691" class="key">pay_period</text>
+<text x="200.0" y="691" class="td">2026-08</text>
+<line x1="60.0" y1="703" x2="378.67" y2="703" class="sep"/>
+<text x="73.0" y="727" class="key">gross_salary</text>
+<text x="200.0" y="727" class="td">2678.38</text>
+<line x1="60.0" y1="739" x2="378.67" y2="739" class="sep"/>
+<text x="73.0" y="763" class="key">net_salary</text>
+<text x="200.0" y="763" class="td">2089.14</text>
+<rect x="390.67" y="518" width="318.67" height="368" rx="6" class="card"/>
+<rect x="391.67" y="519" width="316.67" height="40" rx="5" fill="#f9fafb"/>
+<line x1="390.67" y1="559" x2="709.34" y2="559" stroke="#d9dde3"/>
+<text x="403.67" y="544" class="doc">ID card</text>
+<text x="696.34" y="544" class="muted" text-anchor="end">page(s) 2</text>
+<text x="403.67" y="583" class="key">last_name</text>
+<text x="530.6700000000001" y="583" class="td">BERTIN</text>
+<line x1="390.67" y1="595" x2="709.34" y2="595" class="sep"/>
+<text x="403.67" y="619" class="key">first_name</text>
+<text x="530.6700000000001" y="619" class="td">Alex</text>
+<line x1="390.67" y1="631" x2="709.34" y2="631" class="sep"/>
+<text x="403.67" y="655" class="key">birth_date</text>
+<text x="530.6700000000001" y="655" class="td">2002-02-05</text>
+<line x1="390.67" y1="667" x2="709.34" y2="667" class="sep"/>
+<text x="403.67" y="691" class="key">id_number</text>
+<text x="530.6700000000001" y="691" class="td">J60FKHMY4</text>
+<line x1="390.67" y1="703" x2="709.34" y2="703" class="sep"/>
+<text x="403.67" y="727" class="key">expiry_date</text>
+<text x="530.6700000000001" y="727" class="td">2033-05-19</text>
+<rect x="721.34" y="518" width="318.67" height="368" rx="6" class="card"/>
+<rect x="722.34" y="519" width="316.67" height="40" rx="5" fill="#f9fafb"/>
+<line x1="721.34" y1="559" x2="1040.01" y2="559" stroke="#d9dde3"/>
+<text x="734.34" y="544" class="doc">Bank statement</text>
+<text x="1027.01" y="544" class="muted" text-anchor="end">page(s) 3</text>
+<text x="734.34" y="583" class="key">last_name</text>
+<text x="861.34" y="583" class="td">BERTIN</text>
+<line x1="721.34" y1="595" x2="1040.01" y2="595" class="sep"/>
+<text x="734.34" y="619" class="key">first_name</text>
+<text x="861.34" y="619" class="td">Alex</text>
+<line x1="721.34" y1="631" x2="1040.01" y2="631" class="sep"/>
+<text x="734.34" y="655" class="key">address_line</text>
+<text x="861.34" y="655" class="td">67, avenue Roger</text>
+<text x="861.34" y="675" class="td">Chrétien</text>
+<line x1="721.34" y1="687" x2="1040.01" y2="687" class="sep"/>
+<text x="734.34" y="711" class="key">postal_code</text>
+<text x="861.34" y="711" class="td">53358</text>
+<line x1="721.34" y1="723" x2="1040.01" y2="723" class="sep"/>
+<text x="734.34" y="747" class="key">city</text>
+<text x="861.34" y="747" class="td">Sainte AlfredVille</text>
+<line x1="721.34" y1="759" x2="1040.01" y2="759" class="sep"/>
+<text x="734.34" y="783" class="key">iban</text>
+<text x="861.34" y="783" class="td">FR03100330923271937452</text>
+<text x="861.34" y="803" class="td">99124</text>
+<line x1="721.34" y1="815" x2="1040.01" y2="815" class="sep"/>
+<text x="734.34" y="839" class="key">statement_date</text>
+<text x="861.34" y="839" class="td">2026-08-31</text>
+<line x1="721.34" y1="851" x2="1040.01" y2="851" class="sep"/>
+<text x="734.34" y="875" class="key">salary_credit</text>
+<text x="861.34" y="875" class="td">2089.14</text>
+<rect x="60.0" y="898" width="318.67" height="348" rx="6" class="card"/>
+<rect x="61.0" y="899" width="316.67" height="40" rx="5" fill="#f9fafb"/>
+<line x1="60.0" y1="939" x2="378.67" y2="939" stroke="#d9dde3"/>
+<text x="73.0" y="924" class="doc">Proof of address</text>
+<text x="365.67" y="924" class="muted" text-anchor="end">page(s) 4</text>
+<text x="73.0" y="963" class="key">last_name</text>
+<text x="200.0" y="963" class="td">BERTIN</text>
+<line x1="60.0" y1="975" x2="378.67" y2="975" class="sep"/>
+<text x="73.0" y="999" class="key">first_name</text>
+<text x="200.0" y="999" class="td">Alex</text>
+<line x1="60.0" y1="1011" x2="378.67" y2="1011" class="sep"/>
+<text x="73.0" y="1035" class="key">address_line</text>
+<text x="200.0" y="1035" class="td">67, avenue Roger</text>
+<text x="200.0" y="1055" class="td">Chrétien</text>
+<line x1="60.0" y1="1067" x2="378.67" y2="1067" class="sep"/>
+<text x="73.0" y="1091" class="key">postal_code</text>
+<text x="200.0" y="1091" class="td">53358</text>
+<line x1="60.0" y1="1103" x2="378.67" y2="1103" class="sep"/>
+<text x="73.0" y="1127" class="key">city</text>
+<text x="200.0" y="1127" class="td">Sainte AlfredVille</text>
+<line x1="60.0" y1="1139" x2="378.67" y2="1139" class="sep"/>
+<text x="73.0" y="1163" class="key">supplier</text>
+<text x="200.0" y="1163" class="td">TotalEnergies</text>
+<line x1="60.0" y1="1175" x2="378.67" y2="1175" class="sep"/>
+<text x="73.0" y="1199" class="key">issue_date</text>
+<text x="200.0" y="1199" class="td">2026-08-13</text>
+<line x1="60.0" y1="1211" x2="378.67" y2="1211" class="sep"/>
+<text x="73.0" y="1235" class="key">amount_due</text>
+<text x="200.0" y="1235" class="td">166.75</text>
+<text x="60" y="1278" class="foot">Report generated automatically, to be confirmed by an analyst. 100% local processing.</text>
+</svg>

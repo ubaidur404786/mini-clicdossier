@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 1174" width="1100" height="1174">
+<style>
+  text { font-family: "Segoe UI", Helvetica, Arial, sans-serif; }
+  .brand { font-size: 15px; font-weight: 700; fill: #ffffff; letter-spacing: 1px; }
+  .hdr { font-size: 14px; fill: #ffffff; }
+  .h1 { font-size: 22px; font-weight: 700; fill: #1f2933; }
+  .h2 { font-size: 13px; font-weight: 700; fill: #52606d; letter-spacing: 1px; }
+  .muted { font-size: 13px; fill: #52606d; }
+  .label { font-size: 11px; fill: #52606d; letter-spacing: 1px; }
+  .value { font-size: 15px; font-weight: 600; fill: #1f2933; }
+  .th { font-size: 12px; font-weight: 700; fill: #52606d; }
+  .td { font-size: 13px; fill: #1f2933; }
+  .doc { font-size: 14px; font-weight: 700; fill: #1f2933; }
+  .key { font-size: 11px; fill: #52606d; font-family: Consolas, Menlo, monospace; }
+  .badge { font-size: 12px; font-weight: 700; }
+  .card { fill: #ffffff; stroke: #d9dde3; }
+  .sep { stroke: #eceff3; }
+  .foot { font-size: 12px; fill: #7b8794; }
+</style>
+<rect width="1100" height="1174" fill="#f4f5f7"/>
+<rect x="0" y="0" width="1100" height="48" fill="#1f2a44"/>
+<text x="32" y="30" class="brand">MINI CLICDOSSIER</text>
+<text x="1068" y="30" class="hdr" text-anchor="end">dossier_014.pdf · FR</text>
+<text x="60" y="98" class="h1">Rapport du dossier : dossier_014.pdf</text>
+<text x="60" y="122" class="muted">Contrôle automatique d'un dossier de prêt</text>
+<rect x="60.0" y="150" width="236" height="90" rx="6" class="card"/>
+<text x="76.0" y="174" class="label">STATUT</text>
+<rect x="76.0" y="185" width="54" height="22" rx="11" fill="#fbe4e2"/><text x="103.0" y="200" class="badge" fill="#a12a1f" text-anchor="middle">ALERT</text>
+<rect x="308.66999999999996" y="150" width="236" height="90" rx="6" class="card"/>
+<text x="324.66999999999996" y="174" class="label">DOCUMENTS MANQUANTS</text>
+<text x="324.66999999999996" y="200" class="value">aucun</text>
+<rect x="557.3399999999999" y="150" width="236" height="90" rx="6" class="card"/>
+<text x="573.3399999999999" y="174" class="label">ALERTES</text>
+<text x="573.3399999999999" y="200" class="value">Justificatif de domicile de</text>
+<text x="573.3399999999999" y="222" class="value">moins de 90 jours</text>
+<rect x="806.01" y="150" width="236" height="90" rx="6" class="card"/>
+<text x="822.01" y="174" class="label">TEMPS DE TRAITEMENT</text>
+<text x="822.01" y="200" class="value">6.9 s</text>
+<text x="60" y="280" class="h2">CONTRÔLES</text>
+<rect x="60" y="294" width="980" height="190" rx="6" class="card"/>
+<rect x="61" y="295" width="978" height="33" rx="5" fill="#f9fafb"/>
+<text x="73" y="316" class="th">Contrôle</text>
+<text x="572" y="316" class="th">Résultat</text>
+<text x="705" y="316" class="th">Détail</text>
+<line x1="60" y1="328" x2="1040" y2="328" class="sep"/>
+<text x="73" y="353" class="td">Même nom sur les documents</text>
+<rect x="572" y="338" width="30" height="22" rx="11" fill="#e3f4e8"/><text x="587.0" y="353" class="badge" fill="#1e6b3a" text-anchor="middle">OK</text>
+<text x="705" y="353" class="td">3 documents, same name</text>
+<line x1="60" y1="367" x2="1040" y2="367" class="sep"/>
+<text x="73" y="392" class="td">Même adresse (facture et relevé)</text>
+<rect x="572" y="377" width="30" height="22" rx="11" fill="#e3f4e8"/><text x="587.0" y="392" class="badge" fill="#1e6b3a" text-anchor="middle">OK</text>
+<text x="705" y="392" class="td">same address (1.00)</text>
+<line x1="60" y1="406" x2="1040" y2="406" class="sep"/>
+<text x="73" y="431" class="td">Justificatif de domicile de moins de 90 jours</text>
+<rect x="572" y="416" width="54" height="22" rx="11" fill="#fbe4e2"/><text x="599.0" y="431" class="badge" fill="#a12a1f" text-anchor="middle">ALERT</text>
+<text x="705" y="431" class="td">bill is 156 days old (max 90)</text>
+<line x1="60" y1="445" x2="1040" y2="445" class="sep"/>
+<text x="73" y="470" class="td">Salaire visible sur le relevé</text>
+<rect x="572" y="455" width="30" height="22" rx="11" fill="#e3f4e8"/><text x="587.0" y="470" class="badge" fill="#1e6b3a" text-anchor="middle">OK</text>
+<text x="705" y="470" class="td">net 1605.62 vs credit 1605.62</text>
+<text x="60" y="524" class="h2">DOCUMENTS</text>
+<rect x="60.0" y="538" width="318.67" height="348" rx="6" class="card"/>
+<rect x="61.0" y="539" width="316.67" height="40" rx="5" fill="#f9fafb"/>
+<line x1="60.0" y1="579" x2="378.67" y2="579" stroke="#d9dde3"/>
+<text x="73.0" y="564" class="doc">Relevé bancaire</text>
+<text x="365.67" y="564" class="muted" text-anchor="end">page(s) 1</text>
+<text x="73.0" y="603" class="key">last_name</text>
+<text x="200.0" y="603" class="td">MAILLET</text>
+<line x1="60.0" y1="615" x2="378.67" y2="615" class="sep"/>
+<text x="73.0" y="639" class="key">first_name</text>
+<text x="200.0" y="639" class="td">Thierry</text>
+<line x1="60.0" y1="651" x2="378.67" y2="651" class="sep"/>
+<text x="73.0" y="675" class="key">address_line</text>
+<text x="200.0" y="675" class="td">12, rue Ollivier</text>
+<line x1="60.0" y1="687" x2="378.67" y2="687" class="sep"/>
+<text x="73.0" y="711" class="key">postal_code</text>
+<text x="200.0" y="711" class="td">78970</text>
+<line x1="60.0" y1="723" x2="378.67" y2="723" class="sep"/>
+<text x="73.0" y="747" class="key">city</text>
+<text x="200.0" y="747" class="td">Sainte Arnaude-sur-Mer</text>
+<line x1="60.0" y1="759" x2="378.67" y2="759" class="sep"/>
+<text x="73.0" y="783" class="key">iban</text>
+<text x="200.0" y="783" class="td">FR45632016328708317278</text>
+<text x="200.0" y="803" class="td">89579</text>
+<line x1="60.0" y1="815" x2="378.67" y2="815" class="sep"/>
+<text x="73.0" y="839" class="key">statement_date</text>
+<text x="200.0" y="839" class="td">2026-08-31</text>
+<line x1="60.0" y1="851" x2="378.67" y2="851" class="sep"/>
+<text x="73.0" y="875" class="key">salary_credit</text>
+<text x="200.0" y="875" class="td">1605.62</text>
+<rect x="390.67" y="538" width="318.67" height="348" rx="6" class="card"/>
+<rect x="391.67" y="539" width="316.67" height="40" rx="5" fill="#f9fafb"/>
+<line x1="390.67" y1="579" x2="709.34" y2="579" stroke="#d9dde3"/>
+<text x="403.67" y="564" class="doc">Justificatif de domicile</text>
+<text x="696.34" y="564" class="muted" text-anchor="end">page(s) 2</text>
+<text x="403.67" y="603" class="key">last_name</text>
+<text x="530.6700000000001" y="603" class="td">-</text>
+<line x1="390.67" y1="615" x2="709.34" y2="615" class="sep"/>
+<text x="403.67" y="639" class="key">first_name</text>
+<text x="530.6700000000001" y="639" class="td">Thierry</text>
+<line x1="390.67" y1="651" x2="709.34" y2="651" class="sep"/>
+<text x="403.67" y="675" class="key">address_line</text>
+<text x="530.6700000000001" y="675" class="td">12, rue Ollivier</text>
+<line x1="390.67" y1="687" x2="709.34" y2="687" class="sep"/>
+<text x="403.67" y="711" class="key">postal_code</text>
+<text x="530.6700000000001" y="711" class="td">78970</text>
+<line x1="390.67" y1="723" x2="709.34" y2="723" class="sep"/>
+<text x="403.67" y="747" class="key">city</text>
+<text x="530.6700000000001" y="747" class="td">Sainte Arnaude-sur-Mer</text>
+<line x1="390.67" y1="759" x2="709.34" y2="759" class="sep"/>
+<text x="403.67" y="783" class="key">supplier</text>
+<text x="530.6700000000001" y="783" class="td">Engie</text>
+<line x1="390.67" y1="795" x2="709.34" y2="795" class="sep"/>
+<text x="403.67" y="819" class="key">issue_date</text>
+<text x="530.6700000000001" y="819" class="td">2026-05-06</text>
+<line x1="390.67" y1="831" x2="709.34" y2="831" class="sep"/>
+<text x="403.67" y="855" class="key">amount_due</text>
+<text x="530.6700000000001" y="855" class="td">121.05</text>
+<rect x="721.34" y="538" width="318.67" height="348" rx="6" class="card"/>
+<rect x="722.34" y="539" width="316.67" height="40" rx="5" fill="#f9fafb"/>
+<line x1="721.34" y1="579" x2="1040.01" y2="579" stroke="#d9dde3"/>
+<text x="734.34" y="564" class="doc">Bulletin de salaire</text>
+<text x="1027.01" y="564" class="muted" text-anchor="end">page(s) 3</text>
+<text x="734.34" y="603" class="key">last_name</text>
+<text x="861.34" y="603" class="td">MAILLET</text>
+<line x1="721.34" y1="615" x2="1040.01" y2="615" class="sep"/>
+<text x="734.34" y="639" class="key">first_name</text>
+<text x="861.34" y="639" class="td">Thierry</text>
+<line x1="721.34" y1="651" x2="1040.01" y2="651" class="sep"/>
+<text x="734.34" y="675" class="key">employer</text>
+<text x="861.34" y="675" class="td">Costa</text>
+<line x1="721.34" y1="687" x2="1040.01" y2="687" class="sep"/>
+<text x="734.34" y="711" class="key">pay_period</text>
+<text x="861.34" y="711" class="td">2026-08</text>
+<line x1="721.34" y1="723" x2="1040.01" y2="723" class="sep"/>
+<text x="734.34" y="747" class="key">gross_salary</text>
+<text x="861.34" y="747" class="td">2058.49</text>
+<line x1="721.34" y1="759" x2="1040.01" y2="759" class="sep"/>
+<text x="734.34" y="783" class="key">net_salary</text>
+<text x="861.34" y="783" class="td">1605.62</text>
+<rect x="60.0" y="898" width="318.67" height="220" rx="6" class="card"/>
+<rect x="61.0" y="899" width="316.67" height="40" rx="5" fill="#f9fafb"/>
+<line x1="60.0" y1="939" x2="378.67" y2="939" stroke="#d9dde3"/>
+<text x="73.0" y="924" class="doc">Carte d&#x27;identité</text>
+<text x="365.67" y="924" class="muted" text-anchor="end">page(s) 4</text>
+<text x="73.0" y="963" class="key">last_name</text>
+<text x="200.0" y="963" class="td">MAILLET</text>
+<line x1="60.0" y1="975" x2="378.67" y2="975" class="sep"/>
+<text x="73.0" y="999" class="key">first_name</text>
+<text x="200.0" y="999" class="td">Thierry</text>
+<line x1="60.0" y1="1011" x2="378.67" y2="1011" class="sep"/>
+<text x="73.0" y="1035" class="key">birth_date</text>
+<text x="200.0" y="1035" class="td">1980-01-02</text>
+<line x1="60.0" y1="1047" x2="378.67" y2="1047" class="sep"/>
+<text x="73.0" y="1071" class="key">id_number</text>
+<text x="200.0" y="1071" class="td">VS4F8CGVY</text>
+<line x1="60.0" y1="1083" x2="378.67" y2="1083" class="sep"/>
+<text x="73.0" y="1107" class="key">expiry_date</text>
+<text x="200.0" y="1107" class="td">2030-05-08</text>
+<text x="60" y="1150" class="foot">Rapport généré automatiquement, à valider par un analyste. Traitement 100 % local.</text>
+</svg>
