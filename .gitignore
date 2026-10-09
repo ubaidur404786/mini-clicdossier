@@ -1,0 +1,22 @@
+# local / private
+CLAUDE.md
+NOTES.md
+.claude/
+*.local.md
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# editor
+.vscode/
+.idea/
+
+# generated data and outputs (regenerated with the scripts)
+data/generated/
+data/loan_files/
+outputs/
+*.log
