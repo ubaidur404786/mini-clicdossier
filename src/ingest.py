@@ -4,7 +4,7 @@ from pathlib import Path
 import pymupdf
 from PIL import Image
 
-DPI = 300
+DPI = 200
 MIN_CHARS=50
 
 def page_to_image(page, dpi=DPI):
