@@ -1,0 +1,46 @@
+{
+  "person_id": "p004",
+  "scenario": "scanned",
+  "file_date": "2026-09-27",
+  "documents": {
+    "id_card": {
+      "last_name": "GODARD",
+      "first_name": "Christophe",
+      "birth_date": "1963-04-27",
+      "id_number": "BLJH75LXO",
+      "expiry_date": "2034-12-12"
+    },
+    "payslip": {
+      "last_name": "GODARD",
+      "first_name": "Christophe",
+      "employer": "Cousin S.A.R.L.",
+      "pay_period": "2026-08",
+      "gross_salary": 3897.62,
+      "net_salary": 3040.14
+    },
+    "proof_of_address": {
+      "last_name": "GODARD",
+      "first_name": "Christophe",
+      "address_line": "89, chemin de Lenoir",
+      "postal_code": "02796",
+      "city": "Sainte Paulineboeuf",
+      "supplier": "Engie",
+      "issue_date": "2026-08-24",
+      "amount_due": 77.08
+    },
+    "bank_statement": {
+      "last_name": "GODARD",
+      "first_name": "Christophe",
+      "address_line": "89, chemin de Lenoir",
+      "postal_code": "02796",
+      "city": "Sainte Paulineboeuf",
+      "iban": "FR3127048281489325288095701",
+      "statement_date": "2026-08-31",
+      "salary_credit": 3040.14
+    }
+  },
+  "expected": {
+    "missing": [],
+    "alerts": []
+  }
+}

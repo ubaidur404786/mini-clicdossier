@@ -1,0 +1,46 @@
+{
+  "person_id": "p029",
+  "scenario": "ok",
+  "file_date": "2026-09-29",
+  "documents": {
+    "id_card": {
+      "last_name": "LEGENDRE",
+      "first_name": "Maggie",
+      "birth_date": "1968-03-08",
+      "id_number": "NFHOLQC3O",
+      "expiry_date": "2036-05-17"
+    },
+    "payslip": {
+      "last_name": "LEGENDRE",
+      "first_name": "Maggie",
+      "employer": "Turpin SARL",
+      "pay_period": "2026-08",
+      "gross_salary": 3304.4,
+      "net_salary": 2577.43
+    },
+    "proof_of_address": {
+      "last_name": "LEGENDRE",
+      "first_name": "Maggie",
+      "address_line": "39, avenue Diaz",
+      "postal_code": "32570",
+      "city": "Martineau",
+      "supplier": "EDF",
+      "issue_date": "2026-08-18",
+      "amount_due": 159.94
+    },
+    "bank_statement": {
+      "last_name": "LEGENDRE",
+      "first_name": "Maggie",
+      "address_line": "39, avenue Diaz",
+      "postal_code": "32570",
+      "city": "Martineau",
+      "iban": "FR1482175946474367136959440",
+      "statement_date": "2026-08-31",
+      "salary_credit": 2577.43
+    }
+  },
+  "expected": {
+    "missing": [],
+    "alerts": []
+  }
+}

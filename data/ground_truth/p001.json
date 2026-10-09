@@ -1,0 +1,48 @@
+{
+  "person_id": "p001",
+  "scenario": "address_mismatch",
+  "file_date": "2026-09-19",
+  "documents": {
+    "id_card": {
+      "last_name": "RIOU",
+      "first_name": "Frédéric",
+      "birth_date": "1960-03-23",
+      "id_number": "PKH1DNMMJ",
+      "expiry_date": "2028-03-14"
+    },
+    "payslip": {
+      "last_name": "RIOU",
+      "first_name": "Frédéric",
+      "employer": "Martinez SA",
+      "pay_period": "2026-08",
+      "gross_salary": 2623.3,
+      "net_salary": 2046.17
+    },
+    "proof_of_address": {
+      "last_name": "RIOU",
+      "first_name": "Frédéric",
+      "address_line": "18, rue de Auger",
+      "postal_code": "83818",
+      "city": "Humbert-sur-Mer",
+      "supplier": "Veolia",
+      "issue_date": "2026-07-30",
+      "amount_due": 115.07
+    },
+    "bank_statement": {
+      "last_name": "RIOU",
+      "first_name": "Frédéric",
+      "address_line": "chemin de Moulin",
+      "postal_code": "28242",
+      "city": "Saint Jeannenec",
+      "iban": "FR4179402654235116155940781",
+      "statement_date": "2026-08-31",
+      "salary_credit": 2046.17
+    }
+  },
+  "expected": {
+    "missing": [],
+    "alerts": [
+      "same_address"
+    ]
+  }
+}

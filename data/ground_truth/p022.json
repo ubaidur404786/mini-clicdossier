@@ -1,0 +1,46 @@
+{
+  "person_id": "p022",
+  "scenario": "scanned",
+  "file_date": "2026-09-29",
+  "documents": {
+    "id_card": {
+      "last_name": "SEGUIN",
+      "first_name": "Jeannine",
+      "birth_date": "1971-10-09",
+      "id_number": "BVM2P9E6G",
+      "expiry_date": "2028-03-28"
+    },
+    "payslip": {
+      "last_name": "SEGUIN",
+      "first_name": "Jeannine",
+      "employer": "Ledoux S.A.",
+      "pay_period": "2026-08",
+      "gross_salary": 4423.04,
+      "net_salary": 3449.97
+    },
+    "proof_of_address": {
+      "last_name": "SEGUIN",
+      "first_name": "Jeannine",
+      "address_line": "78, avenue Théophile Pruvost",
+      "postal_code": "54412",
+      "city": "Legendre-sur-Lopez",
+      "supplier": "Veolia",
+      "issue_date": "2026-08-10",
+      "amount_due": 40.24
+    },
+    "bank_statement": {
+      "last_name": "SEGUIN",
+      "first_name": "Jeannine",
+      "address_line": "78, avenue Théophile Pruvost",
+      "postal_code": "54412",
+      "city": "Legendre-sur-Lopez",
+      "iban": "FR7934123281206797403447134",
+      "statement_date": "2026-08-31",
+      "salary_credit": 3449.97
+    }
+  },
+  "expected": {
+    "missing": [],
+    "alerts": []
+  }
+}

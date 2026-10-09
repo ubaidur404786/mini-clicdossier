@@ -1,0 +1,46 @@
+{
+  "person_id": "p024",
+  "scenario": "scanned",
+  "file_date": "2026-09-23",
+  "documents": {
+    "id_card": {
+      "last_name": "PARENT",
+      "first_name": "Virginie",
+      "birth_date": "1968-04-14",
+      "id_number": "XN0GUO4KH",
+      "expiry_date": "2036-07-15"
+    },
+    "payslip": {
+      "last_name": "PARENT",
+      "first_name": "Virginie",
+      "employer": "Bousquet",
+      "pay_period": "2026-08",
+      "gross_salary": 2668.7,
+      "net_salary": 2081.59
+    },
+    "proof_of_address": {
+      "last_name": "PARENT",
+      "first_name": "Virginie",
+      "address_line": "104, avenue Paul",
+      "postal_code": "83552",
+      "city": "Arnaud",
+      "supplier": "TotalEnergies",
+      "issue_date": "2026-08-12",
+      "amount_due": 105.1
+    },
+    "bank_statement": {
+      "last_name": "PARENT",
+      "first_name": "Virginie",
+      "address_line": "104, avenue Paul",
+      "postal_code": "83552",
+      "city": "Arnaud",
+      "iban": "FR0871756551256746807154516",
+      "statement_date": "2026-08-31",
+      "salary_credit": 2081.59
+    }
+  },
+  "expected": {
+    "missing": [],
+    "alerts": []
+  }
+}

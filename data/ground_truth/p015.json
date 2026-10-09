@@ -1,0 +1,41 @@
+{
+  "person_id": "p015",
+  "scenario": "missing_doc",
+  "file_date": "2026-09-02",
+  "documents": {
+    "payslip": {
+      "last_name": "FOUQUET",
+      "first_name": "Corinne",
+      "employer": "Besnard",
+      "pay_period": "2026-08",
+      "gross_salary": 3510.39,
+      "net_salary": 2738.1
+    },
+    "proof_of_address": {
+      "last_name": "FOUQUET",
+      "first_name": "Corinne",
+      "address_line": "872, chemin Odette Hoarau",
+      "postal_code": "81383",
+      "city": "Vallée-sur-Mer",
+      "supplier": "EDF",
+      "issue_date": "2026-08-24",
+      "amount_due": 104.16
+    },
+    "bank_statement": {
+      "last_name": "FOUQUET",
+      "first_name": "Corinne",
+      "address_line": "872, chemin Odette Hoarau",
+      "postal_code": "81383",
+      "city": "Vallée-sur-Mer",
+      "iban": "FR0214345581223623166587603",
+      "statement_date": "2026-08-31",
+      "salary_credit": 2738.1
+    }
+  },
+  "expected": {
+    "missing": [
+      "id_card"
+    ],
+    "alerts": []
+  }
+}

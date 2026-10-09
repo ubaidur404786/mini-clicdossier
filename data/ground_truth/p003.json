@@ -1,0 +1,46 @@
+{
+  "person_id": "p003",
+  "scenario": "ok",
+  "file_date": "2026-09-06",
+  "documents": {
+    "id_card": {
+      "last_name": "LECOQ",
+      "first_name": "Philippine",
+      "birth_date": "1973-11-09",
+      "id_number": "ZYCWTIQJ7",
+      "expiry_date": "2035-05-25"
+    },
+    "payslip": {
+      "last_name": "LECOQ",
+      "first_name": "Philippine",
+      "employer": "Bègue Didier S.A.R.L.",
+      "pay_period": "2026-08",
+      "gross_salary": 2862.47,
+      "net_salary": 2232.73
+    },
+    "proof_of_address": {
+      "last_name": "LECOQ",
+      "first_name": "Philippine",
+      "address_line": "rue Gomes",
+      "postal_code": "51374",
+      "city": "Saint Hélèneboeuf",
+      "supplier": "Engie",
+      "issue_date": "2026-07-28",
+      "amount_due": 135.85
+    },
+    "bank_statement": {
+      "last_name": "LECOQ",
+      "first_name": "Philippine",
+      "address_line": "rue Gomes",
+      "postal_code": "51374",
+      "city": "Saint Hélèneboeuf",
+      "iban": "FR5572423884969653287101226",
+      "statement_date": "2026-08-31",
+      "salary_credit": 2232.73
+    }
+  },
+  "expected": {
+    "missing": [],
+    "alerts": []
+  }
+}

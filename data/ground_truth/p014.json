@@ -1,0 +1,48 @@
+{
+  "person_id": "p014",
+  "scenario": "old_bill",
+  "file_date": "2026-09-18",
+  "documents": {
+    "id_card": {
+      "last_name": "MAILLET",
+      "first_name": "Thierry",
+      "birth_date": "1980-01-02",
+      "id_number": "VS4F8CGVY",
+      "expiry_date": "2030-05-08"
+    },
+    "payslip": {
+      "last_name": "MAILLET",
+      "first_name": "Thierry",
+      "employer": "Costa",
+      "pay_period": "2026-08",
+      "gross_salary": 2058.49,
+      "net_salary": 1605.62
+    },
+    "proof_of_address": {
+      "last_name": "MAILLET",
+      "first_name": "Thierry",
+      "address_line": "12, rue Ollivier",
+      "postal_code": "78970",
+      "city": "Sainte Arnaude-sur-Mer",
+      "supplier": "Engie",
+      "issue_date": "2026-05-06",
+      "amount_due": 121.05
+    },
+    "bank_statement": {
+      "last_name": "MAILLET",
+      "first_name": "Thierry",
+      "address_line": "12, rue Ollivier",
+      "postal_code": "78970",
+      "city": "Sainte Arnaude-sur-Mer",
+      "iban": "FR4563201632870831727889579",
+      "statement_date": "2026-08-31",
+      "salary_credit": 1605.62
+    }
+  },
+  "expected": {
+    "missing": [],
+    "alerts": [
+      "proof_of_address_recent"
+    ]
+  }
+}

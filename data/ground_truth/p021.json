@@ -1,0 +1,41 @@
+{
+  "person_id": "p021",
+  "scenario": "missing_doc",
+  "file_date": "2026-09-08",
+  "documents": {
+    "payslip": {
+      "last_name": "HERNANDEZ",
+      "first_name": "Alexandre",
+      "employer": "Lelièvre",
+      "pay_period": "2026-08",
+      "gross_salary": 2418.89,
+      "net_salary": 1886.73
+    },
+    "proof_of_address": {
+      "last_name": "HERNANDEZ",
+      "first_name": "Alexandre",
+      "address_line": "124, boulevard Klein",
+      "postal_code": "89229",
+      "city": "HenryVille",
+      "supplier": "TotalEnergies",
+      "issue_date": "2026-08-09",
+      "amount_due": 171.49
+    },
+    "bank_statement": {
+      "last_name": "HERNANDEZ",
+      "first_name": "Alexandre",
+      "address_line": "124, boulevard Klein",
+      "postal_code": "89229",
+      "city": "HenryVille",
+      "iban": "FR0577520471167190229413186",
+      "statement_date": "2026-08-31",
+      "salary_credit": 1886.73
+    }
+  },
+  "expected": {
+    "missing": [
+      "id_card"
+    ],
+    "alerts": []
+  }
+}

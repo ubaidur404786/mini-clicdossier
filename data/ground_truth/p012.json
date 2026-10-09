@@ -1,0 +1,46 @@
+{
+  "person_id": "p012",
+  "scenario": "scanned",
+  "file_date": "2026-09-09",
+  "documents": {
+    "id_card": {
+      "last_name": "MARTY",
+      "first_name": "Lucy",
+      "birth_date": "1964-08-26",
+      "id_number": "5TB94874F",
+      "expiry_date": "2033-02-18"
+    },
+    "payslip": {
+      "last_name": "MARTY",
+      "first_name": "Lucy",
+      "employer": "Godard S.A.R.L.",
+      "pay_period": "2026-08",
+      "gross_salary": 3102.83,
+      "net_salary": 2420.21
+    },
+    "proof_of_address": {
+      "last_name": "MARTY",
+      "first_name": "Lucy",
+      "address_line": "68, rue Bertin",
+      "postal_code": "22694",
+      "city": "Morel",
+      "supplier": "Engie",
+      "issue_date": "2026-08-05",
+      "amount_due": 161.05
+    },
+    "bank_statement": {
+      "last_name": "MARTY",
+      "first_name": "Lucy",
+      "address_line": "68, rue Bertin",
+      "postal_code": "22694",
+      "city": "Morel",
+      "iban": "FR7355698169340608835615951",
+      "statement_date": "2026-08-31",
+      "salary_credit": 2420.21
+    }
+  },
+  "expected": {
+    "missing": [],
+    "alerts": []
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "person_id": "p007",
+  "scenario": "ok",
+  "file_date": "2026-09-24",
+  "documents": {
+    "id_card": {
+      "last_name": "OLIVIER",
+      "first_name": "Laurent",
+      "birth_date": "1976-09-25",
+      "id_number": "G65KXVF1T",
+      "expiry_date": "2036-06-17"
+    },
+    "payslip": {
+      "last_name": "OLIVIER",
+      "first_name": "Laurent",
+      "employer": "Gilles S.A.S.",
+      "pay_period": "2026-08",
+      "gross_salary": 4177.22,
+      "net_salary": 3258.23
+    },
+    "proof_of_address": {
+      "last_name": "OLIVIER",
+      "first_name": "Laurent",
+      "address_line": "72, chemin Pinto",
+      "postal_code": "31995",
+      "city": "Sainte SusanBourg",
+      "supplier": "EDF",
+      "issue_date": "2026-08-17",
+      "amount_due": 123.85
+    },
+    "bank_statement": {
+      "last_name": "OLIVIER",
+      "first_name": "Laurent",
+      "address_line": "72, chemin Pinto",
+      "postal_code": "31995",
+      "city": "Sainte SusanBourg",
+      "iban": "FR3401326773602606474687234",
+      "statement_date": "2026-08-31",
+      "salary_credit": 3258.23
+    }
+  },
+  "expected": {
+    "missing": [],
+    "alerts": []
+  }
+}

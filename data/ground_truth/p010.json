@@ -1,0 +1,41 @@
+{
+  "person_id": "p010",
+  "scenario": "missing_doc",
+  "file_date": "2026-09-23",
+  "documents": {
+    "payslip": {
+      "last_name": "TEXIER",
+      "first_name": "Marc",
+      "employer": "Le Roux S.A.",
+      "pay_period": "2026-08",
+      "gross_salary": 3540.87,
+      "net_salary": 2761.88
+    },
+    "proof_of_address": {
+      "last_name": "TEXIER",
+      "first_name": "Marc",
+      "address_line": "53, avenue de Deschamps",
+      "postal_code": "07194",
+      "city": "BaronVille",
+      "supplier": "Veolia",
+      "issue_date": "2026-08-19",
+      "amount_due": 66.66
+    },
+    "bank_statement": {
+      "last_name": "TEXIER",
+      "first_name": "Marc",
+      "address_line": "53, avenue de Deschamps",
+      "postal_code": "07194",
+      "city": "BaronVille",
+      "iban": "FR0242786801128059826204505",
+      "statement_date": "2026-08-31",
+      "salary_credit": 2761.88
+    }
+  },
+  "expected": {
+    "missing": [
+      "id_card"
+    ],
+    "alerts": []
+  }
+}

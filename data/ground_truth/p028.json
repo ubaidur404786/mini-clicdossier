@@ -1,0 +1,46 @@
+{
+  "person_id": "p028",
+  "scenario": "ok",
+  "file_date": "2026-09-18",
+  "documents": {
+    "id_card": {
+      "last_name": "BOULANGER",
+      "first_name": "Dominique",
+      "birth_date": "1970-12-28",
+      "id_number": "RJIW1SWJC",
+      "expiry_date": "2030-12-01"
+    },
+    "payslip": {
+      "last_name": "BOULANGER",
+      "first_name": "Dominique",
+      "employer": "Gay SA",
+      "pay_period": "2026-08",
+      "gross_salary": 3059.38,
+      "net_salary": 2386.32
+    },
+    "proof_of_address": {
+      "last_name": "BOULANGER",
+      "first_name": "Dominique",
+      "address_line": "865, rue de Maurice",
+      "postal_code": "09340",
+      "city": "Dumas",
+      "supplier": "TotalEnergies",
+      "issue_date": "2026-08-29",
+      "amount_due": 87.02
+    },
+    "bank_statement": {
+      "last_name": "BOULANGER",
+      "first_name": "Dominique",
+      "address_line": "865, rue de Maurice",
+      "postal_code": "09340",
+      "city": "Dumas",
+      "iban": "FR7717240050455623869222196",
+      "statement_date": "2026-08-31",
+      "salary_credit": 2386.32
+    }
+  },
+  "expected": {
+    "missing": [],
+    "alerts": []
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "person_id": "p017",
+  "scenario": "ok",
+  "file_date": "2026-09-18",
+  "documents": {
+    "id_card": {
+      "last_name": "BERTIN",
+      "first_name": "Alex",
+      "birth_date": "2002-02-05",
+      "id_number": "J60FKHMY4",
+      "expiry_date": "2033-05-19"
+    },
+    "payslip": {
+      "last_name": "BERTIN",
+      "first_name": "Alex",
+      "employer": "Hubert",
+      "pay_period": "2026-08",
+      "gross_salary": 2678.38,
+      "net_salary": 2089.14
+    },
+    "proof_of_address": {
+      "last_name": "BERTIN",
+      "first_name": "Alex",
+      "address_line": "67, avenue Roger Chrétien",
+      "postal_code": "53358",
+      "city": "Sainte AlfredVille",
+      "supplier": "TotalEnergies",
+      "issue_date": "2026-08-13",
+      "amount_due": 166.75
+    },
+    "bank_statement": {
+      "last_name": "BERTIN",
+      "first_name": "Alex",
+      "address_line": "67, avenue Roger Chrétien",
+      "postal_code": "53358",
+      "city": "Sainte AlfredVille",
+      "iban": "FR0310033092327193745299124",
+      "statement_date": "2026-08-31",
+      "salary_credit": 2089.14
+    }
+  },
+  "expected": {
+    "missing": [],
+    "alerts": []
+  }
+}

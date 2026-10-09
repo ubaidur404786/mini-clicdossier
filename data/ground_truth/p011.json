@@ -1,0 +1,46 @@
+{
+  "person_id": "p011",
+  "scenario": "ok",
+  "file_date": "2026-09-22",
+  "documents": {
+    "id_card": {
+      "last_name": "LACROIX",
+      "first_name": "Maggie",
+      "birth_date": "1987-07-15",
+      "id_number": "5BXXC02DG",
+      "expiry_date": "2033-09-26"
+    },
+    "payslip": {
+      "last_name": "LACROIX",
+      "first_name": "Maggie",
+      "employer": "Pasquier Laurent S.A.",
+      "pay_period": "2026-08",
+      "gross_salary": 3020.73,
+      "net_salary": 2356.17
+    },
+    "proof_of_address": {
+      "last_name": "LACROIX",
+      "first_name": "Maggie",
+      "address_line": "6, avenue de Legendre",
+      "postal_code": "95258",
+      "city": "Goncalves",
+      "supplier": "Engie",
+      "issue_date": "2026-08-20",
+      "amount_due": 99.06
+    },
+    "bank_statement": {
+      "last_name": "LACROIX",
+      "first_name": "Maggie",
+      "address_line": "6, avenue de Legendre",
+      "postal_code": "95258",
+      "city": "Goncalves",
+      "iban": "FR6256342160733754330365414",
+      "statement_date": "2026-08-31",
+      "salary_credit": 2356.17
+    }
+  },
+  "expected": {
+    "missing": [],
+    "alerts": []
+  }
+}

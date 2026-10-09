@@ -1,0 +1,46 @@
+{
+  "person_id": "p016",
+  "scenario": "scanned",
+  "file_date": "2026-09-03",
+  "documents": {
+    "id_card": {
+      "last_name": "DE OLIVEIRA",
+      "first_name": "Amélie",
+      "birth_date": "1992-05-05",
+      "id_number": "755NF4ZW9",
+      "expiry_date": "2035-01-02"
+    },
+    "payslip": {
+      "last_name": "DE OLIVEIRA",
+      "first_name": "Amélie",
+      "employer": "Vasseur",
+      "pay_period": "2026-08",
+      "gross_salary": 3297.85,
+      "net_salary": 2572.32
+    },
+    "proof_of_address": {
+      "last_name": "DE OLIVEIRA",
+      "first_name": "Amélie",
+      "address_line": "7, rue Adrienne Léger",
+      "postal_code": "97159",
+      "city": "Tanguy-sur-Mer",
+      "supplier": "EDF",
+      "issue_date": "2026-07-27",
+      "amount_due": 133.5
+    },
+    "bank_statement": {
+      "last_name": "DE OLIVEIRA",
+      "first_name": "Amélie",
+      "address_line": "7, rue Adrienne Léger",
+      "postal_code": "97159",
+      "city": "Tanguy-sur-Mer",
+      "iban": "FR1146706562729806990162720",
+      "statement_date": "2026-08-31",
+      "salary_credit": 2572.32
+    }
+  },
+  "expected": {
+    "missing": [],
+    "alerts": []
+  }
+}

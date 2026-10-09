@@ -1,0 +1,46 @@
+{
+  "person_id": "p009",
+  "scenario": "ok",
+  "file_date": "2026-09-07",
+  "documents": {
+    "id_card": {
+      "last_name": "PAYET",
+      "first_name": "Marguerite",
+      "birth_date": "2004-04-23",
+      "id_number": "L9XPSEIMV",
+      "expiry_date": "2030-04-06"
+    },
+    "payslip": {
+      "last_name": "PAYET",
+      "first_name": "Marguerite",
+      "employer": "Payet",
+      "pay_period": "2026-08",
+      "gross_salary": 4315.18,
+      "net_salary": 3365.84
+    },
+    "proof_of_address": {
+      "last_name": "PAYET",
+      "first_name": "Marguerite",
+      "address_line": "67, rue Albert",
+      "postal_code": "79676",
+      "city": "Saint Élise-sur-Mer",
+      "supplier": "Engie",
+      "issue_date": "2026-07-27",
+      "amount_due": 41.01
+    },
+    "bank_statement": {
+      "last_name": "PAYET",
+      "first_name": "Marguerite",
+      "address_line": "67, rue Albert",
+      "postal_code": "79676",
+      "city": "Saint Élise-sur-Mer",
+      "iban": "FR8051354278498084124118244",
+      "statement_date": "2026-08-31",
+      "salary_credit": 3365.84
+    }
+  },
+  "expected": {
+    "missing": [],
+    "alerts": []
+  }
+}

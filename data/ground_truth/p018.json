@@ -1,0 +1,38 @@
+{
+  "person_id": "p018",
+  "scenario": "missing_doc",
+  "file_date": "2026-09-28",
+  "documents": {
+    "id_card": {
+      "last_name": "NICOLAS",
+      "first_name": "Inès",
+      "birth_date": "2000-07-27",
+      "id_number": "JA1WJ0TPA",
+      "expiry_date": "2028-08-01"
+    },
+    "payslip": {
+      "last_name": "NICOLAS",
+      "first_name": "Inès",
+      "employer": "Henry Grenier SARL",
+      "pay_period": "2026-08",
+      "gross_salary": 2032.08,
+      "net_salary": 1585.02
+    },
+    "bank_statement": {
+      "last_name": "NICOLAS",
+      "first_name": "Inès",
+      "address_line": "boulevard Margaret Mallet",
+      "postal_code": "50832",
+      "city": "Sanchez",
+      "iban": "FR0291905865185067165726284",
+      "statement_date": "2026-08-31",
+      "salary_credit": 1585.02
+    }
+  },
+  "expected": {
+    "missing": [
+      "proof_of_address"
+    ],
+    "alerts": []
+  }
+}

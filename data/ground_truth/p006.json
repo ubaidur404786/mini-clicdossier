@@ -1,0 +1,46 @@
+{
+  "person_id": "p006",
+  "scenario": "ok",
+  "file_date": "2026-09-13",
+  "documents": {
+    "id_card": {
+      "last_name": "NEVEU",
+      "first_name": "Louise",
+      "birth_date": "1989-09-09",
+      "id_number": "84AZYTJXE",
+      "expiry_date": "2032-07-28"
+    },
+    "payslip": {
+      "last_name": "NEVEU",
+      "first_name": "Louise",
+      "employer": "Benoit",
+      "pay_period": "2026-08",
+      "gross_salary": 2892.21,
+      "net_salary": 2255.92
+    },
+    "proof_of_address": {
+      "last_name": "NEVEU",
+      "first_name": "Louise",
+      "address_line": "rue David",
+      "postal_code": "42172",
+      "city": "Gomez-la-Forêt",
+      "supplier": "Veolia",
+      "issue_date": "2026-08-29",
+      "amount_due": 40.45
+    },
+    "bank_statement": {
+      "last_name": "NEVEU",
+      "first_name": "Louise",
+      "address_line": "rue David",
+      "postal_code": "42172",
+      "city": "Gomez-la-Forêt",
+      "iban": "FR1682997376311656670106513",
+      "statement_date": "2026-08-31",
+      "salary_credit": 2255.92
+    }
+  },
+  "expected": {
+    "missing": [],
+    "alerts": []
+  }
+}

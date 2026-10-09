@@ -1,0 +1,46 @@
+{
+  "person_id": "p023",
+  "scenario": "ok",
+  "file_date": "2026-09-30",
+  "documents": {
+    "id_card": {
+      "last_name": "TOUSSAINT",
+      "first_name": "Jacqueline",
+      "birth_date": "2003-12-24",
+      "id_number": "0HP87WXE6",
+      "expiry_date": "2033-06-07"
+    },
+    "payslip": {
+      "last_name": "TOUSSAINT",
+      "first_name": "Jacqueline",
+      "employer": "Gaillard SARL",
+      "pay_period": "2026-08",
+      "gross_salary": 3996.93,
+      "net_salary": 3117.61
+    },
+    "proof_of_address": {
+      "last_name": "TOUSSAINT",
+      "first_name": "Jacqueline",
+      "address_line": "26, rue de Jourdan",
+      "postal_code": "20372",
+      "city": "Guérin",
+      "supplier": "Veolia",
+      "issue_date": "2026-09-06",
+      "amount_due": 85.67
+    },
+    "bank_statement": {
+      "last_name": "TOUSSAINT",
+      "first_name": "Jacqueline",
+      "address_line": "26, rue de Jourdan",
+      "postal_code": "20372",
+      "city": "Guérin",
+      "iban": "FR7099471746488771906594013",
+      "statement_date": "2026-08-31",
+      "salary_credit": 3117.61
+    }
+  },
+  "expected": {
+    "missing": [],
+    "alerts": []
+  }
+}

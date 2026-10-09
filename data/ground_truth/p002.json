@@ -1,0 +1,38 @@
+{
+  "person_id": "p002",
+  "scenario": "missing_doc",
+  "file_date": "2026-09-30",
+  "documents": {
+    "id_card": {
+      "last_name": "HOAREAU",
+      "first_name": "Édouard",
+      "birth_date": "1995-05-27",
+      "id_number": "W5NGCX194",
+      "expiry_date": "2028-11-16"
+    },
+    "payslip": {
+      "last_name": "HOAREAU",
+      "first_name": "Édouard",
+      "employer": "Chevalier",
+      "pay_period": "2026-08",
+      "gross_salary": 2884.19,
+      "net_salary": 2249.67
+    },
+    "bank_statement": {
+      "last_name": "HOAREAU",
+      "first_name": "Édouard",
+      "address_line": "69, rue de Fischer",
+      "postal_code": "09146",
+      "city": "Leleu",
+      "iban": "FR3031647525534192832764835",
+      "statement_date": "2026-08-31",
+      "salary_credit": 2249.67
+    }
+  },
+  "expected": {
+    "missing": [
+      "proof_of_address"
+    ],
+    "alerts": []
+  }
+}

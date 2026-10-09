@@ -1,0 +1,48 @@
+{
+  "person_id": "p005",
+  "scenario": "salary_mismatch",
+  "file_date": "2026-09-08",
+  "documents": {
+    "id_card": {
+      "last_name": "ÉTIENNE",
+      "first_name": "Véronique",
+      "birth_date": "1994-05-24",
+      "id_number": "V6OH9SDBD",
+      "expiry_date": "2034-09-21"
+    },
+    "payslip": {
+      "last_name": "ÉTIENNE",
+      "first_name": "Véronique",
+      "employer": "Aubry Evrard S.A.S.",
+      "pay_period": "2026-08",
+      "gross_salary": 3836.97,
+      "net_salary": 2992.84
+    },
+    "proof_of_address": {
+      "last_name": "ÉTIENNE",
+      "first_name": "Véronique",
+      "address_line": "40, rue de Clément",
+      "postal_code": "93597",
+      "city": "Saint Gilbertdan",
+      "supplier": "Veolia",
+      "issue_date": "2026-08-24",
+      "amount_due": 123.5
+    },
+    "bank_statement": {
+      "last_name": "ÉTIENNE",
+      "first_name": "Véronique",
+      "address_line": "40, rue de Clément",
+      "postal_code": "93597",
+      "city": "Saint Gilbertdan",
+      "iban": "FR2063834657871331509839301",
+      "statement_date": "2026-08-31",
+      "salary_credit": 2555.22
+    }
+  },
+  "expected": {
+    "missing": [],
+    "alerts": [
+      "salary_on_statement"
+    ]
+  }
+}

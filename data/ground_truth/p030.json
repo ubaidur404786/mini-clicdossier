@@ -1,0 +1,48 @@
+{
+  "person_id": "p030",
+  "scenario": "old_bill",
+  "file_date": "2026-09-25",
+  "documents": {
+    "id_card": {
+      "last_name": "DELMAS",
+      "first_name": "Anastasie",
+      "birth_date": "1990-01-12",
+      "id_number": "KO64T026R",
+      "expiry_date": "2030-10-16"
+    },
+    "payslip": {
+      "last_name": "DELMAS",
+      "first_name": "Anastasie",
+      "employer": "Legendre Deschamps et Fils",
+      "pay_period": "2026-08",
+      "gross_salary": 3396.79,
+      "net_salary": 2649.5
+    },
+    "proof_of_address": {
+      "last_name": "DELMAS",
+      "first_name": "Anastasie",
+      "address_line": "1, avenue de Renault",
+      "postal_code": "97439",
+      "city": "Benard-sur-Vasseur",
+      "supplier": "EDF",
+      "issue_date": "2026-03-27",
+      "amount_due": 94.44
+    },
+    "bank_statement": {
+      "last_name": "DELMAS",
+      "first_name": "Anastasie",
+      "address_line": "1, avenue de Renault",
+      "postal_code": "97439",
+      "city": "Benard-sur-Vasseur",
+      "iban": "FR1121047095214562328588424",
+      "statement_date": "2026-08-31",
+      "salary_credit": 2649.5
+    }
+  },
+  "expected": {
+    "missing": [],
+    "alerts": [
+      "proof_of_address_recent"
+    ]
+  }
+}

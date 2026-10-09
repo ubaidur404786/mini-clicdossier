@@ -1,0 +1,46 @@
+{
+  "person_id": "p025",
+  "scenario": "ok",
+  "file_date": "2026-09-15",
+  "documents": {
+    "id_card": {
+      "last_name": "BUISSON",
+      "first_name": "Valérie",
+      "birth_date": "1992-08-26",
+      "id_number": "62GDSWM31",
+      "expiry_date": "2035-04-01"
+    },
+    "payslip": {
+      "last_name": "BUISSON",
+      "first_name": "Valérie",
+      "employer": "Loiseau",
+      "pay_period": "2026-08",
+      "gross_salary": 3656.63,
+      "net_salary": 2852.17
+    },
+    "proof_of_address": {
+      "last_name": "BUISSON",
+      "first_name": "Valérie",
+      "address_line": "boulevard de Pinto",
+      "postal_code": "52155",
+      "city": "Paul",
+      "supplier": "Engie",
+      "issue_date": "2026-08-22",
+      "amount_due": 152.92
+    },
+    "bank_statement": {
+      "last_name": "BUISSON",
+      "first_name": "Valérie",
+      "address_line": "boulevard de Pinto",
+      "postal_code": "52155",
+      "city": "Paul",
+      "iban": "FR1777034824771093248086131",
+      "statement_date": "2026-08-31",
+      "salary_credit": 2852.17
+    }
+  },
+  "expected": {
+    "missing": [],
+    "alerts": []
+  }
+}

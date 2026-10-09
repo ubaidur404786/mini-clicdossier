@@ -1,0 +1,38 @@
+{
+  "person_id": "p008",
+  "scenario": "missing_doc",
+  "file_date": "2026-09-16",
+  "documents": {
+    "id_card": {
+      "last_name": "CARPENTIER",
+      "first_name": "Bertrand",
+      "birth_date": "1983-05-08",
+      "id_number": "C58DRC11E",
+      "expiry_date": "2033-01-13"
+    },
+    "payslip": {
+      "last_name": "CARPENTIER",
+      "first_name": "Bertrand",
+      "employer": "Lemoine SA",
+      "pay_period": "2026-08",
+      "gross_salary": 1950.64,
+      "net_salary": 1521.5
+    },
+    "proof_of_address": {
+      "last_name": "CARPENTIER",
+      "first_name": "Bertrand",
+      "address_line": "105, boulevard Martel",
+      "postal_code": "64973",
+      "city": "BarbierVille",
+      "supplier": "Engie",
+      "issue_date": "2026-08-07",
+      "amount_due": 77.11
+    }
+  },
+  "expected": {
+    "missing": [
+      "bank_statement"
+    ],
+    "alerts": []
+  }
+}
