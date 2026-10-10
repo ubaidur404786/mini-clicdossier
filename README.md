@@ -1,13 +1,16 @@
-# Mini ClicDossier
+# DossierCheck: local AI verification of French loan files
 
 **Automatic check of French loan files, 100% local: one loan file (4 documents, scanned pages
 included) is checked in ~8 seconds on a 6 GB laptop GPU. 97.7 % of fields extracted exactly,
 6/6 planted mismatches caught with 0 false alerts, and no file wrongly marked OK**
 (30 synthetic French loan files, 114 pages).
 
-**See the output:** [French report (HTML)](https://ubaidur404786.github.io/mini-clicdossier/report_fr.html)
-· [English report (HTML)](https://ubaidur404786.github.io/mini-clicdossier/report_en.html)
+*Independent learning project on synthetic data, not affiliated with any company.*
+
+**See the output:** [French report (HTML)](https://ubaidur404786.github.io/dossier-check-local/report_fr.html)
+· [English report (HTML)](https://ubaidur404786.github.io/dossier-check-local/report_en.html)
 · [pipeline diagram](docs/architecture.svg)
+
 
 ## 1. The problem
 
